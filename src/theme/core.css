@@ -1,0 +1,88 @@
+.fs-10 {
+    font-size: 0.5em;
+}
+
+.fs-12 {
+    font-size: 0.75em;
+}
+
+.fs-14 {
+    font-size: 0.875em;
+}
+
+.fs-16 {
+    font-size: 1em;
+}
+
+.fs-18 {
+    font-size: 1.125em;
+}
+
+.fs-20 {
+    font-size: 1.25em;
+}
+
+.fs-22 {
+    font-size: 1.375em;
+}
+
+.fs-24 {
+    font-size: 1.5em;
+}
+
+.fs-26 {
+    font-size: 1.625em;
+}
+
+.fs-28 {
+    font-size: 1.75em;
+}
+
+.fs-30 {
+    font-size: 1.875em;
+}
+
+.fs-32 {
+    font-size: 2em;
+}
+
+.font-weight-bold {
+    font-weight: bold;
+}
+
+.w-25 {
+    width: 25%;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.w-75 {
+    width: 75%;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.no-text-decoration {
+    text-decoration: none;
+}
+
+.alert-radio-group::-webkit-scrollbar,
+.alert-checkbox-group::-webkit-scrollbar {
+width: 1em;
+display: block !important;
+}
+
+.alert-radio-group::-webkit-scrollbar-track,
+.alert-checkbox-group::-webkit-scrollbar-track {
+-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+.alert-radio-group::-webkit-scrollbar-thumb,
+.alert-checkbox-group::-webkit-scrollbar-thumb {
+background-color: darkgrey;
+outline: 1px solid slategrey;
+}

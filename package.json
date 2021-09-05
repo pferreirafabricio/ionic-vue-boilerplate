@@ -1,0 +1,50 @@
+{
+  "name": "app-boilerplate",
+  "description": "An Ionic project",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build && npm run postbuild",
+    "build:qa": "vue-cli-service build --dest dist-qa --mode staging",
+    "postbuild": "npx cap copy",
+    "resources:android": "cordova-res android --skip-config --copy",
+    "resources:ios": "cordova-res ios --skip-config --copy"
+  },
+  "dependencies": {
+    "@capacitor/android": "^3.2.0",
+    "@capacitor/core": "^3.2.0",
+    "@capacitor/ios": "^3.2.0",
+    "@capacitor/share": "^1.0.4",
+    "@capacitor/storage": "^1.1.0",
+    "@ionic-native/core": "^5.36.0",
+    "@ionic/vue": "^5.7.0",
+    "@ionic/vue-router": "^5.7.0",
+    "@revolist/vue-datagrid": "^2.9.9",
+    "@vue/composition-api": "^1.1.4",
+    "@vue/reactivity": "^3.2.6",
+    "apexcharts": "^3.28.1",
+    "axios": "^0.21.1",
+    "core-js": "^3.16.4",
+    "ionicons": "^5.5.3",
+    "mitt": "^2.1.0",
+    "vue": "^3.2.6",
+    "vue-currency-input": "^2.0.2",
+    "vue-router": "^4.0.11",
+    "vuex": "^4.0.2"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^3.2.0",
+    "@vue/cli-plugin-babel": "^4.5.13",
+    "@vue/cli-plugin-eslint": "^4.5.13",
+    "@vue/cli-plugin-router": "^4.5.13",
+    "@vue/cli-service": "^4.5.13",
+    "@vue/compiler-sfc": "^3.2.6",
+    "@vue/test-utils": "^2.0.0-rc.13",
+    "cordova-res": "^0.15.3",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-vue": "^7.17.0"
+  }
+}

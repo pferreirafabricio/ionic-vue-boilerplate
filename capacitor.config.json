@@ -1,0 +1,8 @@
+{
+  "appId": "com.app.boilerplate",
+  "appName": "Ionic Vue Boilerplate",
+  "bundledWebRuntime": false,
+  "webDir": "dist",
+  "npmClient": "npm",
+  "cordova": {}
+}
