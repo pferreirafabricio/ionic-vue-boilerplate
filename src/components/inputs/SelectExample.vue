@@ -4,7 +4,7 @@
     <ion-select
       :ok-text="okText"
       :cancel-text="cancelText"
-      :placeholder="Fields.cityName"
+      :placeholder="placeholder"
       :multiple="multiple"
       :disabled="disabled"
       v-model="Fields.value"
@@ -16,7 +16,7 @@
       "
     >
       <ion-select-option
-        v-for="(item, index) in getList"
+        v-for="(item, index) in list"
         :value="item.code"
         :key="index"
       >
@@ -71,7 +71,7 @@ export default {
     },
     disabled: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     multiple: {
       type: Boolean,
@@ -80,6 +80,10 @@ export default {
     label: {
       type: String,
       default: 'Select example',
+    },
+    placeholder: {
+      type: String,
+      default: 'Select an item',
     },
     errorMessage: {
       type: String,
@@ -92,9 +96,14 @@ export default {
     },
   },
   computed: {
-    ...mapGetters('example', ['getList']),
+    // ...mapGetters('example', ['getList']),
   },
   setup() {
+    const list = ref([
+      { code: 1, name: 'Item A' },
+      { code: 2, name: 'Item B' },
+    ]);
+
     const Fields = ref({
       value: '',
     });
@@ -107,16 +116,17 @@ export default {
       close,
       Fields,
       Errors,
+      list,
     };
   },
   mounted() {
     this.getCities = [];
     this.Fields.value = this.value;
 
-    this.getListOfSomething();
+    // this.getListOfSomething();
   },
   methods: {
-    ...mapActions('general', ['getListOfSomething']),
+    // ...mapActions('general', ['getListOfSomething']),
     validate() {
       let isValid = true;
 

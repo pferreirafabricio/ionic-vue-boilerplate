@@ -4,6 +4,8 @@ import {
   enter,
   call,
   home,
+  alertCircle,
+  nuclear,
 } from 'ionicons/icons';
 
 import UserTypes from '../../../enums/UserTypes';
@@ -18,6 +20,16 @@ export default {
       title: 'Contact',
       url: '/contact',
       icon: call,
+    },
+    {
+      title: 'Not found',
+      url: '/any-router-that-dont-exists',
+      icon: alertCircle,
+    },
+    {
+      title: 'Not authorized',
+      url: '/not-authorized',
+      icon: nuclear,
     },
     {
       title: 'Division',
@@ -41,6 +53,12 @@ export default {
       title: 'Login',
       url: '/login',
       icon: enter,
+    },
+    /** Logout function is only in withoutAuth for demonstrations purposes */
+    {
+      title: 'Logout',
+      url: '/logout',
+      icon: power,
     },
     {
       title: 'Register',

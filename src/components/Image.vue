@@ -1,7 +1,7 @@
 <template>
   <ion-img
     :src="
-      !imageFailsToLoad
+      !imageFailsToLoad && !!src
         ? `${getImagesAddress}${src}`
         : defaultImage
     "

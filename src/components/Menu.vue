@@ -167,8 +167,8 @@ export default {
 
       this.appPages = [
         ...(this.isLoggedIn && userMenuItems ? userMenuItems : []),
-        ...this.getPublic,
         ...(this.isLoggedIn ? this.getNeedAuth : this.getWithoutAuth),
+        ...this.getPublic,
       ];
 
       this.$forceUpdate();

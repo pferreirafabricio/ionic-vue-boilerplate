@@ -92,7 +92,6 @@ export default {
       default: 'solid',
     },
     to: {
-      type: String,
       required: false,
     },
     download: {

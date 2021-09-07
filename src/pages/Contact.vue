@@ -1,5 +1,10 @@
 <template>
-  <base-layout page-title="Contato">
+  <base-layout
+    page-title="Contato"
+    page-default-back-link="/home"
+    :show-menu-button="false"
+    :ignore-history="true"
+  >
     <ion-row>
       <ion-col size="12">
         <a
@@ -50,19 +55,13 @@
         size="12"
         class="d-flex align-items-center justify-content-around"
       >
-        <a
-          href="https://www.facebook.com"
-          target="_blank"
-        >
+        <a href="https://www.facebook.com" target="_blank">
           <ion-icon :icon="Icon.logoFacebook" class="fs-32"></ion-icon>
         </a>
         <a href="https://www.instagram.com" target="_blank">
           <ion-icon :icon="Icon.logoInstagram" class="fs-32"></ion-icon>
         </a>
-        <a
-          href="https://www.youtube.com"
-          target="_blank"
-        >
+        <a href="https://www.youtube.com" target="_blank">
           <ion-icon :icon="Icon.logoYoutube" class="fs-32"></ion-icon>
         </a>
       </ion-col>
@@ -71,18 +70,18 @@
 </template>
 
 <script>
-import { IonIcon } from '@ionic/vue';
+import { IonIcon } from "@ionic/vue";
 import {
   call,
   mail,
   logoFacebook,
   logoInstagram,
   logoYoutube,
-} from 'ionicons/icons';
-import { ref } from 'vue';
-import { mapGetters } from 'vuex';
+} from "ionicons/icons";
+import { ref } from "vue";
+import { mapGetters } from "vuex";
 
-import WhatsappButton from '../components/whatsapp/SendMessage.vue';
+import WhatsappButton from "../components/whatsapp/SendMessage.vue";
 
 export default {
   components: {
@@ -90,7 +89,7 @@ export default {
     IonIcon,
   },
   computed: {
-    ...mapGetters('general', ['getWhatsappTelephone', 'getContactEmail']),
+    ...mapGetters("general", ["getWhatsappTelephone", "getContactEmail"]),
   },
   setup() {
     const Icon = ref({
