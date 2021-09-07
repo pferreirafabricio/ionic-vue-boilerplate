@@ -6,6 +6,11 @@
   <img alt="License" src="https://img.shields.io/badge/license-MIT-green">
 </p>
 
+## :eyes: Overview 
+<div>
+  <img src="./docs/screenshots/home.png" width="auto" height="400px"/>
+</div>
+
 ## :open_book: About 
 This project is a simple Ionic app template, using VueJS framework and Capacitor. It brings a simple folder structure and some components.
 
