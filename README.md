@@ -9,6 +9,8 @@
 ## :eyes: Overview 
 <div>
   <img src="./docs/screenshots/home.png" width="auto" height="400px"/>
+  <img src="./docs/screenshots/components.png" width="auto" height="400px"/>
+  <img src="./docs/screenshots/login.png" width="auto" height="400px"/>
 </div>
 
 ## :open_book: About 
