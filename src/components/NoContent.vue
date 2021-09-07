@@ -20,7 +20,7 @@ export default {
     },
     image: {
       type: String,
-      default: 'assets/vectors/join.svg',
+      default: '/assets/vectors/join.svg',
     },
   },
 };

@@ -30,7 +30,7 @@ export default {
 
     return {
       imageFailsToLoad,
-      defaultImage: 'assets/vectors/blank.svg',
+      defaultImage: '/assets/vectors/blank.svg',
     };
   },
 };

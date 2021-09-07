@@ -30,7 +30,7 @@ export default {
   },
   setup() {
     return {
-      image: '../assets/vectors/cancel.svg',
+      image: '/assets/vectors/cancel.svg',
     };
   },
 };
