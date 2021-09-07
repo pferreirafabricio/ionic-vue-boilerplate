@@ -12,6 +12,7 @@ This project is a simple Ionic app template, using VueJS framework and Capacitor
 ## :bricks: This project was built with: 
 - [Ionic](https://ionicframework.com/)
 - [Ionic + Vue](https://ionicframework.com/vue)
+- [Capacitor](https://capacitorjs.com/)
 - [Vue](https://vuejs.org/)
 - [Bootstrap Utilities for layout](https://getbootstrap.com/docs/4.0/layout/utilities-for-layout/)
 
