@@ -1,6 +1,9 @@
 const path = require('path');
 
 module.exports = {
+  publicPath: process.env.NODE_ENV === 'production'
+    ? process.env.VUE_APP_CURRENT_SITE_ADDRESS
+    : '/',
   lintOnSave: false,
   chainWebpack: (config) => {
     config.resolve.alias
