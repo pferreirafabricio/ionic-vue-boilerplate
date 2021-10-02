@@ -9,7 +9,11 @@
 ## :eyes: Overview 
 <div>
   <img src="./docs/screenshots/home.png" width="auto" height="400px"/>
+  <img src="./docs/screenshots/components.png" width="auto" height="400px"/>
+  <img src="./docs/screenshots/login.png" width="auto" height="400px"/>
 </div>
+
+> Take a look in https://pferreirafabricio.github.io/ionic-vue-boilerplate for a live test. OBS: Don't forget to press F12 and toggle device emulation.
 
 ## :open_book: About 
 This project is a simple Ionic app template, using VueJS framework and Capacitor. It brings a simple folder structure and some components.
