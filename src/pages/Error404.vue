@@ -32,7 +32,7 @@ export default {
   },
   setup() {
     return {
-      image: '../assets/vectors/404.svg',
+      image: 'assets/vectors/404.svg',
     };
   },
 };
