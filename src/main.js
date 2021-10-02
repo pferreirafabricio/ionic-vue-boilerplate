@@ -2,6 +2,7 @@ import { createApp } from 'vue';
 import { IonicVue } from '@ionic/vue';
 import { Storage } from '@capacitor/storage';
 import mitt from 'mitt';
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
 
 import App from './App.vue';
 import router from './router';
@@ -96,6 +97,8 @@ app.component('base-layout', BaseLayout);
 app.component('error-message', ErrorMessage);
 app.component('loading', Loading);
 
-router.isReady().then(() => {
-  app.mount('#app');
-});
+router.isReady()
+  .then(() => {
+    app.mount('#app');
+  })
+  .then(() => defineCustomElements(window));

@@ -32,6 +32,7 @@
         <ion-col size="12">
           <Divider>Inputs</Divider>
           <File class="mb-2" />
+          <File open-camera label="Open camera and gallery"  class="mb-2" />
           <SelectExample multiple />
         </ion-col>
         <ion-col size="12">

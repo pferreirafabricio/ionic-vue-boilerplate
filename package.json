@@ -13,11 +13,13 @@
   },
   "dependencies": {
     "@capacitor/android": "^3.2.0",
+    "@capacitor/camera": "^1.1.0",
     "@capacitor/core": "^3.2.0",
     "@capacitor/ios": "^3.2.0",
     "@capacitor/share": "^1.0.4",
     "@capacitor/storage": "^1.1.0",
     "@ionic-native/core": "^5.36.0",
+    "@ionic/pwa-elements": "^3.0.2",
     "@ionic/vue": "^5.7.0",
     "@ionic/vue-router": "^5.7.0",
     "@revolist/vue-datagrid": "^2.9.9",
