@@ -39,7 +39,7 @@ This project is a simple Ionic app template, using VueJS framework and Capacitor
  4. Push your branch: ```git push origin my-feature```
  
 ## :page_with_curl:	License
-This project is under the MIT license. Take a look at the [LICENSE](LICENSE.md) file for more details.
+This project is under the MIT license. Take a look at the [LICENSE](LICENSE) file for more details.
 
 ## 📚 Learn more
 
