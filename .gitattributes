@@ -1,0 +1,8 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+*.md linguist-detectable=true
+*.md linguist-documentation=false
+
+# And ignore those repositories considering them as documentation
+docs/** linguist-documentation
