@@ -12,6 +12,7 @@
   <img src="./docs/screenshots/components.png" width="auto" height="400px"/>
   <img src="./docs/screenshots/login.png" width="auto" height="400px"/>
 </div>
+<br/>
 
 > Take a look in https://pferreirafabricio.github.io/ionic-vue-boilerplate for a live test. OBS: Don't forget to press F12 and toggle device emulation.
 
