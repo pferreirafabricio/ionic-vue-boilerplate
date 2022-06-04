@@ -27,14 +27,14 @@ This project is a simple Ionic app template, using VueJS framework and Capacitor
 - [Bootstrap Utilities for layout](https://getbootstrap.com/docs/4.0/layout/utilities-for-layout/)
 
 ## :running_man: Installing and Running  
- 1. Clone this repository `https://github.com/pferreirafabricio/ionic-vue-boilerplate.git`;
+ 1. Clone this repository `https://github.com/pferreirafabricio/ionic-vue-boilerplate.git`
  2. Enter in the project's folder: `cd ionic-vue-boilerplate`
  3. Run `npm install`
  4. Run `npm run serve or ionic serve`
  5. Access `http://localhost:8080` in your browser and be happy 😃
  
 ## :recycle: Contribute
- 1. Fork this repository;
+ 1. Fork this repository
  2. Create a branch with your feature: ```git checkout -b my-feature```
  3. Commit your changes: ```git commit -m 'feat: My new feature'```
  4. Push your branch: ```git push origin my-feature```
