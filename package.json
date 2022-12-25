@@ -22,7 +22,7 @@
     "@ionic/pwa-elements": "^3.0.2",
     "@ionic/vue": "^6.4.1",
     "@ionic/vue-router": "^5.7.0",
-    "@revolist/vue-datagrid": "^2.9.9",
+    "@revolist/vue-datagrid": "^3.3.0",
     "@vue/reactivity": "^3.2.6",
     "apexcharts": "^3.28.1",
     "axios": "^0.21.1",
