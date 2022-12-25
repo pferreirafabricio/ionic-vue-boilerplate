@@ -20,7 +20,7 @@
     "@capacitor/storage": "^1.1.0",
     "@ionic-native/core": "^5.36.0",
     "@ionic/pwa-elements": "^3.0.2",
-    "@ionic/vue": "^5.7.0",
+    "@ionic/vue": "^6.4.1",
     "@ionic/vue-router": "^5.7.0",
     "@revolist/vue-datagrid": "^2.9.9",
     "@vue/reactivity": "^3.2.6",
