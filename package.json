@@ -31,7 +31,7 @@
     "@revolist/vue-datagrid": "^3.3.0",
     "@vue/reactivity": "^3.2.6",
     "apexcharts": "^3.28.1",
-    "axios": "^0.21.1",
+    "axios": "^1.2.1",
     "core-js": "^3.16.4",
     "ionicons": "^5.5.3",
     "mitt": "^2.1.0",
