@@ -1,10 +1,16 @@
-<h5 align="center">
-  <img src="https://ionicframework.com/img/vue/logo@2x.png" width="150px" /><br>
-  <b>Ionic + Vue + Capacitor = 💖</b>
-</h5>
-<p align="center">
-  <img alt="License" src="https://img.shields.io/badge/license-MIT-green">
+<h1 align="right">
+  <img src="https://ionicframework.com/img/vue/logo@2x.png" width="200px" align="left" />
+  Ionic + Vue + Capacitor = 💖
+</h1>
+
+
+<p align="right">
+  <!-- License -->
+  <a>
+    <img alt="License" src="https://img.shields.io/badge/license-MIT-green?style=for-the-badge&labelColor=3880FF&color=2FBD7B">
+  </a>
 </p>
+<br>
 
 ## :eyes: Overview 
 <div>
@@ -14,7 +20,11 @@
 </div>
 <br/>
 
+> **Note**:
 > Take a look in https://pferreirafabricio.github.io/ionic-vue-boilerplate for a live test. OBS: Don't forget to press F12 and toggle device emulation.
+
+> **Note**:
+> If you prefer you can download the .apk file in the [release v1.0.1](https://github.com/pferreirafabricio/ionic-vue-boilerplate/releases/tag/v1.0.1)
 
 ## :open_book: About 
 This project is a simple Ionic app template, using VueJS framework and Capacitor. It brings a simple folder structure and some components.
@@ -30,7 +40,7 @@ This project is a simple Ionic app template, using VueJS framework and Capacitor
  1. Clone this repository `https://github.com/pferreirafabricio/ionic-vue-boilerplate.git`
  2. Enter in the project's folder: `cd ionic-vue-boilerplate`
  3. Run `npm install`
- 4. Run `npm run serve or ionic serve`
+ 4. Run `npm run serve`
  5. Access `http://localhost:8080` in your browser and be happy 😃
  
 ## :recycle: Contribute
