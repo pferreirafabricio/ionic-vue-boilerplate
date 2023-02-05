@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Ionic Vue Boilerplate</string>
+    <string name="title_activity_main">Ionic Vue Boilerplate</string>
+    <string name="package_name">com.app.boilerplate</string>
+    <string name="custom_url_scheme">com.app.boilerplate</string>
+</resources>
