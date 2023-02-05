@@ -13,8 +13,6 @@ export default {
   async getUserType() {
     const user = await Storage.get({ key: 'user' });
 
-    console.log(user);
-
     if (!user.value) return 0;
 
     const { userType } = JSON.parse(user.value);

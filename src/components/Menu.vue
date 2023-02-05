@@ -154,7 +154,6 @@ export default {
   methods: {
     async verifyIsLoggedIn() {
       const token = await Storage.get({ key: 'token' });
-      console.log(token);
       this.isLoggedIn = !!token.value;
     },
     async mountMenu() {

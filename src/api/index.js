@@ -19,13 +19,12 @@ api.interceptors.request.use(async (config) => {
 });
 
 api.interceptors.response.use((response) => response,
-  (pError) => {
-    if (pError.response.status === 401) {
-      console.log(pError.response.status);
+  (error) => {
+    if (error.response.status === 401) {
       window.location = '/logout';
     }
 
-    return Promise.reject(pError);
+    return Promise.reject(error);
   });
 
 export default api;
