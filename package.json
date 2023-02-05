@@ -6,13 +6,15 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build && npm run postbuild",
-    "build:qa": "vue-cli-service build --dest dist-qa --mode staging && npm run postbuild",
-    "postbuild": "npx cap copy",
+    "build:qa": "vue-cli-service build --dest dist-qa --mode staging && npm run post-build",
+    "post-build": "npx cap copy & npx cap sync",
     "resources:android": "cordova-res android --skip-config --copy",
-    "resources:ios": "cordova-res ios --skip-config --copy"
+    "resources:ios": "cordova-res ios --skip-config --copy",
+    "open:android": "npx cap open android",
+    "run:android": "npx cap run android -l --external"
   },
   "dependencies": {
-    "@capacitor/android": "^3.2.0",
+    "@capacitor/android": "^3.9.0",
     "@capacitor/camera": "^1.1.0",
     "@capacitor/core": "^3.2.0",
     "@capacitor/ios": "^3.2.0",
