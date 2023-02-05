@@ -1,9 +1,6 @@
 const path = require('path');
 
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production'
-    ? process.env.VUE_APP_CURRENT_SITE_ADDRESS
-    : '/',
   devServer: {
     port: process.env.VUE_APP_PORT || '8080',
   },
