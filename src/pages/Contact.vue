@@ -70,26 +70,32 @@
 </template>
 
 <script>
-import { IonIcon } from "@ionic/vue";
+import {
+  IonIcon, IonText, IonCol, IonRow,
+} from '@ionic/vue';
 import {
   call,
   mail,
   logoFacebook,
   logoInstagram,
   logoYoutube,
-} from "ionicons/icons";
-import { ref } from "vue";
-import { mapGetters } from "vuex";
+} from 'ionicons/icons';
+import { ref } from 'vue';
+import { mapGetters } from 'vuex';
 
-import WhatsappButton from "../components/whatsapp/SendMessage.vue";
+import WhatsappButton from '../components/whatsapp/SendMessage.vue';
 
 export default {
+  name: 'Contact',
   components: {
+    IonText,
+    IonCol,
+    IonRow,
     WhatsappButton,
     IonIcon,
   },
   computed: {
-    ...mapGetters("general", ["getWhatsappTelephone", "getContactEmail"]),
+    ...mapGetters('general', ['getWhatsappTelephone', 'getContactEmail']),
   },
   setup() {
     const Icon = ref({

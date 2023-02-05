@@ -44,6 +44,7 @@ import Button from '../components/Button.vue';
 import NoContent from '../components/NoContent.vue';
 
 export default {
+  name: 'RecoverPassword',
   components: {
     Button,
     NoContent,

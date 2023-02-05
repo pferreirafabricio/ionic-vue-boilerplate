@@ -1,5 +1,5 @@
 <template>
-  <SendMessage class="mb-2" />
+  <SendMessage class="mb-2" message="Hi" />
   <NumberWithLink
     message="Hi"
     :telephone="getWhatsappTelephone"

@@ -10,6 +10,7 @@
 import { IonImg, IonText } from '@ionic/vue';
 
 export default {
+  name: 'NoContent',
   components: {
     IonImg, IonText,
   },

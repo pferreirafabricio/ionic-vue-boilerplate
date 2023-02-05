@@ -33,10 +33,10 @@
               class="fs-16"
             ></ion-icon>
           </ion-item>
-          <span v-else-if="menuItem.type === 2 && (i !== appPages.length - 1)">
+          <span v-else-if="menuItem.type === 2 && (index !== appPages.length - 1)">
             <hr />
           </span>
-          <span v-else-if="menuItem.type === 'category' && (i !== appPages.length - 1)">
+          <span v-else-if="menuItem.type === 'category' && (index !== appPages.length - 1)">
             <ion-item>
               <h1 class="">
                 <b>{{ menuItem.title }}</b>
@@ -73,7 +73,6 @@ import {
   IonHeader,
   IonToolbar,
   IonTitle,
-  IonImg,
 } from '@ionic/vue';
 
 import { ref } from 'vue';
@@ -88,7 +87,6 @@ export default {
   components: {
     IonContent,
     IonIcon,
-    IonImg,
     IonItem,
     IonLabel,
     IonList,

@@ -33,7 +33,7 @@
           <Divider>Inputs</Divider>
           <File class="mb-2" />
           <File open-camera label="Open camera and gallery"  class="mb-2" />
-          <SelectExample multiple />
+          <SelectExample multiple v-model="fields.selectExample" />
         </ion-col>
         <ion-col size="12">
           <Divider>Composables</Divider>
@@ -54,6 +54,10 @@
 </template>
 
 <script>
+import {
+  IonGrid, IonRow, IonCol, IonText,
+} from '@ionic/vue';
+
 import Buttons from './examples/Buttons.vue';
 import Whatsapp from './examples/Whatsapp.vue';
 
@@ -66,10 +70,15 @@ import File from '../../components/inputs/File.vue';
 import SelectExample from '../../components/inputs/SelectExample.vue';
 import Button from '../../components/Button.vue';
 import useToast from '../../composition/useToast';
+import { ref } from '@vue/runtime-core';
 
 export default {
   name: 'Home',
   components: {
+    IonGrid,
+    IonRow,
+    IonCol,
+    IonText,
     Buttons,
     Divider,
     ErrorMessage,
@@ -84,8 +93,11 @@ export default {
   setup() {
     const { openToast } = useToast();
 
+    const fields = ref({ selectExample: '' });
+
     return {
       openToast,
+      fields,
     };
   },
 };

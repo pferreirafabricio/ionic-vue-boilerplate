@@ -12,6 +12,7 @@ import {
 } from '@ionic/vue';
 
 export default {
+  name: 'Divider',
   components: {
     IonCol,
     IonItem,

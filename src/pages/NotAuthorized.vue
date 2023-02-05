@@ -20,11 +20,12 @@
 </template>
 
 <script>
-import { IonImg, IonText } from '@ionic/vue';
+import { IonImg, IonText, IonItem } from '@ionic/vue';
 
 export default {
   name: 'NotAuthorized',
   components: {
+    IonItem,
     IonImg,
     IonText,
   },

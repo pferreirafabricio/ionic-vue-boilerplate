@@ -1,21 +1,23 @@
 <template>
-  <Button
-    :size="size"
-    :text="iconOnly ? '' : label"
-    :icon="icon"
-    :iconOnly="iconOnly"
-    :isLoading="loading"
-    @click="openCamera ? getFilesByCamera() : getFiles()"
-  />
-  <ion-input
-    hidden
-    class="d-none"
-    type="file"
-    ref="fileInput"
-    :multiple="multiple"
-    :accept="`${accept};capture=camera`"
-    @change="filesChange"
-  />
+  <div>
+    <Button
+      :size="size"
+      :text="iconOnly ? '' : label"
+      :icon="icon"
+      :iconOnly="iconOnly"
+      :isLoading="loading"
+      @click="openCamera ? getFilesByCamera() : getFiles()"
+    />
+    <ion-input
+      hidden
+      class="d-none"
+      type="file"
+      ref="fileInput"
+      :multiple="multiple"
+      :accept="`${accept};capture=camera`"
+      @change="filesChange"
+    />
+  </div>
 </template>
 
 <script>
@@ -75,7 +77,8 @@ export default {
   },
   methods: {
     getFiles() {
-      const fileInput = this.$refs.fileInput.$el.getElementsByTagName('input')[0];
+      const fileInput =
+        this.$refs.fileInput.$el.getElementsByTagName('input')[0];
       fileInput.click();
     },
     async getFilesByCamera() {
@@ -89,13 +92,15 @@ export default {
     },
     dataUriToBlob(dataURI) {
       const splitDataURI = dataURI.split(',');
-      const byteString = splitDataURI[0].indexOf('base64') >= 0
-        ? atob(splitDataURI[1])
-        : decodeURI(splitDataURI[1]);
+      const byteString =
+        splitDataURI[0].indexOf('base64') >= 0
+          ? atob(splitDataURI[1])
+          : decodeURI(splitDataURI[1]);
       const mimeString = splitDataURI[0].split(':')[1].split(';')[0];
 
       const ia = new Uint8Array(byteString.length);
-      for (let i = 0; i < byteString.length; i++) ia[i] = byteString.charCodeAt(i);
+      for (let i = 0; i < byteString.length; i++)
+        ia[i] = byteString.charCodeAt(i);
 
       return new Blob([ia], { type: mimeString });
     },

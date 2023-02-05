@@ -10,7 +10,7 @@
       v-model="Fields.value"
       @ionChange="
         () => {
-          $emit('update:value', Fields.value);
+          $emit('update:modelValue', Fields.value);
           Errors.value = null;
         }
       "
@@ -49,7 +49,7 @@ import Button from '../Button.vue';
 
 export default {
   name: 'SelectExample',
-  emits: ['update:value'],
+  emits: ['update:modelValue'],
   components: {
     IonLabel,
     IonSelect,
@@ -66,7 +66,7 @@ export default {
       type: String,
       default: 'Cancel',
     },
-    value: {
+    modelValue: {
       required: true,
     },
     disabled: {
@@ -139,7 +139,7 @@ export default {
     },
     cleanSelect() {
       this.Fields.value = null;
-      this.$emit('update:value', this.Fields.value);
+      this.$emit('update:modelValue', this.Fields.value);
       this.Errors.value = null;
     },
   },

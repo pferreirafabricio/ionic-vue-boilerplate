@@ -18,7 +18,7 @@
 
 <script>
 import {
-  IonImg, IonText,
+  IonImg, IonText, IonItem,
 } from '@ionic/vue';
 
 import BaseLayout from '../components/base/BaseLayout.vue';
@@ -29,6 +29,7 @@ export default {
     BaseLayout,
     IonImg,
     IonText,
+    IonItem,
   },
   setup() {
     return {

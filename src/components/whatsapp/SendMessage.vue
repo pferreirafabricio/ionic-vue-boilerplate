@@ -20,6 +20,7 @@ import { mapGetters } from 'vuex';
 import Button from '../Button.vue';
 
 export default {
+  name: 'SendMessage',
   components: {
     Button,
   },

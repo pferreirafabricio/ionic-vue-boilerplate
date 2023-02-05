@@ -5,12 +5,12 @@
     :ignore-history="true"
   >
     <ion-row>
-      <!-- <ion-col size="12">
-        <ion-img
+      <ion-col size="12">
+        <Image
           class="mx-auto w-75 mb-4"
           src="assets/icon/logo.png"
         />
-      </ion-col> -->
+      </ion-col>
       <ion-col size="12">
         <ion-item class="d-flex align-items-end">
           <ion-icon slot="start" class="mr-2" :icon="Icon.mail"></ion-icon>
@@ -90,6 +90,7 @@ import { useRouter } from 'vue-router';
 import { ref } from 'vue';
 
 import Button from '../components/Button.vue';
+import Image from '../components/Image.vue';
 import useToast from '../composition/useToast';
 import login from '../composition/login';
 
@@ -104,6 +105,7 @@ export default {
     IonLabel,
     IonIcon,
     IonText,
+    Image,
   },
   setup() {
     const { openToast } = useToast();

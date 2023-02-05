@@ -8,6 +8,7 @@
 import { IonText } from '@ionic/vue';
 
 export default {
+  name: 'ErrorMessage',
   components: {
     IonText,
   },

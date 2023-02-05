@@ -42,6 +42,7 @@ import {
   IonBackButton,
   IonButtons,
   IonMenuButton,
+  IonText,
 } from '@ionic/vue';
 import { useRouter } from 'vue-router';
 
@@ -70,6 +71,7 @@ export default {
     },
   },
   components: {
+    IonText,
     IonPage,
     IonHeader,
     IonToolbar,

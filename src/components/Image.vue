@@ -1,15 +1,15 @@
 <template>
   <ion-img
     :src="
-      !imageFailsToLoad && !!src
-        ? `${getImagesAddress}${src}`
-        : defaultImage
+      !imageFailsToLoad && !!src ? `${getImagesAddress}/${src}` : defaultImage
     "
     @ionError="imageFailsToLoad = true"
   />
 </template>
 
 <script>
+import { IonImg } from '@ionic/vue';
+
 import { ref } from '@vue/reactivity';
 import { mapGetters } from 'vuex';
 
@@ -19,7 +19,7 @@ export default {
     /** The image path or url */
     src: {
       type: String,
-      required: true,
+      required: false,
     },
   },
   computed: {
@@ -32,6 +32,9 @@ export default {
       imageFailsToLoad,
       defaultImage: 'assets/vectors/blank.svg',
     };
+  },
+  components: {
+    IonImg,
   },
 };
 </script>
