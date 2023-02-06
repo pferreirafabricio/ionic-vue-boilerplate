@@ -24,7 +24,7 @@
 > Take a look in https://pferreirafabricio.github.io/ionic-vue-boilerplate for a live test. OBS: Don't forget to press F12 and toggle device emulation.
 
 > **Note**:
-> If you prefer you can download the .apk file in the [release v1.0.1](https://github.com/pferreirafabricio/ionic-vue-boilerplate/releases/tag/v1.0.1)
+> If you prefer you can download the .apk file in the [releases page](https://github.com/pferreirafabricio/ionic-vue-boilerplate/releases)
 
 ## :open_book: About 
 This project is a simple Ionic app template, using VueJS framework and Capacitor. It brings a simple folder structure and some components.
