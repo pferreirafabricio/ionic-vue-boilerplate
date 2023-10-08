@@ -1,0 +1,9 @@
+// .prettierignore
+
+node_modules
+*.log*
+.cache
+.output
+.env
+dist
+android

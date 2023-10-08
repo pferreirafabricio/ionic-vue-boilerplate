@@ -1,22 +1,22 @@
 <template>
   <div>
-    <ion-text class="fs-18" v-if="firstName">
+    <ion-text v-if="firstName" class="fs-18">
       Welcome, <span class="font-weight-bold">{{ firstName }}</span>
     </ion-text>
   </div>
 </template>
 
 <script>
-import { ref } from 'vue';
-import { mapGetters } from 'vuex';
+import { ref } from "vue";
+import { mapGetters } from "vuex";
 
 export default {
-  name: 'WelcomeText',
+  name: "WelcomeText",
   computed: {
-    ...mapGetters('user', ['getUserName']),
+    ...mapGetters("user", ["getUserName"]),
   },
   setup() {
-    const firstName = ref('');
+    const firstName = ref("");
 
     async function getFirstName() {
       firstName.value = await this.getUserName;

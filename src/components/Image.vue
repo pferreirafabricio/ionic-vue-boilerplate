@@ -8,13 +8,13 @@
 </template>
 
 <script>
-import { IonImg } from '@ionic/vue';
+import { IonImg } from "@ionic/vue";
 
-import { ref } from '@vue/reactivity';
-import { mapGetters } from 'vuex';
+import { ref } from "@vue/reactivity";
+import { mapGetters } from "vuex";
 
 export default {
-  name: 'Image',
+  name: "Image",
   props: {
     /** The image path or url */
     src: {
@@ -23,14 +23,14 @@ export default {
     },
   },
   computed: {
-    ...mapGetters('general', ['getImagesAddress']),
+    ...mapGetters("general", ["getImagesAddress"]),
   },
   setup() {
     const imageFailsToLoad = ref(false);
 
     return {
       imageFailsToLoad,
-      defaultImage: 'assets/vectors/blank.svg',
+      defaultImage: "assets/vectors/blank.svg",
     };
   },
   components: {

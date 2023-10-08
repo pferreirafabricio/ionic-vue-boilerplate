@@ -2,12 +2,12 @@
   <ion-item class="d-flex align-items-center justify-content-between">
     <ion-label>{{ label }}</ion-label>
     <ion-select
+      v-model="Fields.value"
       :ok-text="okText"
       :cancel-text="cancelText"
       :placeholder="placeholder"
       :multiple="multiple"
       :disabled="disabled"
-      v-model="Fields.value"
       @ionChange="
         () => {
           $emit('update:modelValue', Fields.value);
@@ -17,8 +17,8 @@
     >
       <ion-select-option
         v-for="(item, index) in list"
-        :value="item.code"
         :key="index"
+        :value="item.code"
       >
         {{ item.name }}
       </ion-select-option>
@@ -29,7 +29,7 @@
       size="small"
       fill="clear"
       :icon="close"
-      :iconOnly="true"
+      :icon-only="true"
       @click="cleanSelect()"
     />
   </ion-item>
@@ -37,19 +37,15 @@
 </template>
 
 <script>
-import { close } from 'ionicons/icons';
+import { close } from "ionicons/icons";
 
-import {
-  IonLabel, IonSelect, IonSelectOption, IonItem,
-} from '@ionic/vue';
+import { IonLabel, IonSelect, IonSelectOption, IonItem } from "@ionic/vue";
 
-import { ref } from 'vue';
-import { mapActions, mapGetters } from 'vuex';
-import Button from '../Button.vue';
+import { ref } from "vue";
+import Button from "../Button.vue";
 
 export default {
-  name: 'SelectExample',
-  emits: ['update:modelValue'],
+  name: "SelectExample",
   components: {
     IonLabel,
     IonSelect,
@@ -60,11 +56,11 @@ export default {
   props: {
     okText: {
       type: String,
-      default: 'Select',
+      default: "Select",
     },
     cancelText: {
       type: String,
-      default: 'Cancel',
+      default: "Cancel",
     },
     modelValue: {
       required: true,
@@ -79,33 +75,26 @@ export default {
     },
     label: {
       type: String,
-      default: 'Select example',
+      default: "Select example",
     },
     placeholder: {
       type: String,
-      default: 'Select an item',
+      default: "Select an item",
     },
     errorMessage: {
       type: String,
-      default: 'Select a value',
+      default: "Select a value",
     },
   },
-  watch: {
-    value(value) {
-      this.Fields.value = value;
-    },
-  },
-  computed: {
-    // ...mapGetters('example', ['getList']),
-  },
+  emits: ["update:modelValue"],
   setup() {
     const list = ref([
-      { code: 1, name: 'Item A' },
-      { code: 2, name: 'Item B' },
+      { code: 1, name: "Item A" },
+      { code: 2, name: "Item B" },
     ]);
 
     const Fields = ref({
-      value: '',
+      value: "",
     });
 
     const Errors = ref({
@@ -118,6 +107,14 @@ export default {
       Errors,
       list,
     };
+  },
+  computed: {
+    // ...mapGetters('example', ['getList']),
+  },
+  watch: {
+    value(value) {
+      this.Fields.value = value;
+    },
   },
   mounted() {
     this.getCities = [];
@@ -139,7 +136,7 @@ export default {
     },
     cleanSelect() {
       this.Fields.value = null;
-      this.$emit('update:modelValue', this.Fields.value);
+      this.$emit("update:modelValue", this.Fields.value);
       this.Errors.value = null;
     },
   },

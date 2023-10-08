@@ -5,10 +5,10 @@
 </template>
 
 <script>
-import { IonText } from '@ionic/vue';
+import { IonText } from "@ionic/vue";
 
 export default {
-  name: 'ErrorMessage',
+  name: "ErrorMessage",
   components: {
     IonText,
   },

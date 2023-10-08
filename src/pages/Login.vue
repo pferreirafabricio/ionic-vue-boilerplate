@@ -6,21 +6,18 @@
   >
     <ion-row>
       <ion-col size="12">
-        <Image
-          class="mx-auto w-75 mb-4"
-          src="assets/icon/logo.png"
-        />
+        <Image class="mx-auto w-75 mb-4" src="assets/icon/logo.png" />
       </ion-col>
       <ion-col size="12">
         <ion-item class="d-flex align-items-end">
           <ion-icon slot="start" class="mr-2" :icon="Icon.mail"></ion-icon>
           <ion-label position="floating">Email</ion-label>
           <ion-input
+            v-model="Fields.email"
             clear-input
             required
             type="email"
             inputmode="email"
-            v-model="Fields.email"
             @input="ErrorMessages.email = ''"
           ></ion-input>
         </ion-item>
@@ -31,10 +28,10 @@
           <ion-icon slot="start" class="mr-2" :icon="Icon.key"></ion-icon>
           <ion-label position="floating">Password</ion-label>
           <ion-input
+            v-model="Fields.password"
             required
             name="password"
             clear-input
-            v-model="Fields.password"
             :type="showPassword ? 'text' : 'password'"
             @input="ErrorMessages.password = ''"
           ></ion-input>
@@ -54,7 +51,7 @@
           color="primary"
           text="Login"
           :icon="Icon.enterOutline"
-          :isLoading="loading"
+          :is-loading="loading"
           @click="loginUser()"
         />
       </ion-col>
@@ -70,9 +67,7 @@
 </template>
 
 <script>
-import {
-  enterOutline, mail, key, logIn, eye, eyeOff,
-} from 'ionicons/icons';
+import { enterOutline, mail, key, logIn, eye, eyeOff } from "ionicons/icons";
 
 import {
   IonInput,
@@ -82,20 +77,20 @@ import {
   IonLabel,
   IonIcon,
   IonText,
-} from '@ionic/vue';
+} from "@ionic/vue";
 
-import { mapActions } from 'vuex';
+import { mapActions } from "vuex";
 
-import { useRouter } from 'vue-router';
-import { ref } from 'vue';
+import { useRouter } from "vue-router";
+import { ref } from "vue";
 
-import Button from '../components/Button.vue';
-import Image from '../components/Image.vue';
-import useToast from '../composition/useToast';
-import login from '../composition/login';
+import Button from "../components/Button.vue";
+import Image from "../components/Image.vue";
+import useToast from "../composition/useToast";
+import login from "../composition/login";
 
 export default {
-  name: 'Login',
+  name: "Login",
   components: {
     Button,
     IonInput,
@@ -124,13 +119,13 @@ export default {
     });
 
     const Fields = ref({
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     });
 
     const ErrorMessages = ref({
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     });
 
     const loading = ref(false);
@@ -147,7 +142,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions('login', ['login']),
+    ...mapActions("login", ["login"]),
     loginUser() {
       if (!this.validateFields()) {
         return;
@@ -157,7 +152,7 @@ export default {
 
       this.userLogin(this.Fields)
         .then(() => {
-          this.emitter.emit('logged');
+          this.emitter.emit("logged");
         })
         .finally(() => {
           this.loading = false;
@@ -167,19 +162,19 @@ export default {
       let valid = true;
 
       if (!this.Fields.email) {
-        this.ErrorMessages.email = 'Email invalid';
+        this.ErrorMessages.email = "Email invalid";
         valid = false;
       }
 
       if (!this.Fields.password) {
-        this.ErrorMessages.password = 'Password invalid';
+        this.ErrorMessages.password = "Password invalid";
         valid = false;
       }
 
       return valid;
     },
     redirectToRecoveryPassword() {
-      this.router.push({ name: 'recovery-password' });
+      this.router.push({ name: "recovery-password" });
     },
   },
 };

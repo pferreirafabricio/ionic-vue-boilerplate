@@ -20,10 +20,10 @@
 </template>
 
 <script>
-import { IonImg, IonText, IonItem } from '@ionic/vue';
+import { IonImg, IonText, IonItem } from "@ionic/vue";
 
 export default {
-  name: 'NotAuthorized',
+  name: "NotAuthorized",
   components: {
     IonItem,
     IonImg,
@@ -31,7 +31,7 @@ export default {
   },
   setup() {
     return {
-      image: 'assets/vectors/cancel.svg',
+      image: "assets/vectors/cancel.svg",
     };
   },
 };

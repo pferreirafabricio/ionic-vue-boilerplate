@@ -10,7 +10,9 @@
     :href="href"
     @click="!!to && redirectToRoute()"
   >
-    <ion-label v-if="text && !iconOnly" :class="[hasIcon ? 'ml-2' : '']">{{ text }}</ion-label>
+    <ion-label v-if="text && !iconOnly" :class="[hasIcon ? 'ml-2' : '']">{{
+      text
+    }}</ion-label>
     <ion-icon
       v-if="hasIcon"
       :slot="iconOnly ? 'icon-only' : 'start'"
@@ -18,10 +20,10 @@
       :md="mdIcon || icon"
     ></ion-icon>
     <ion-spinner
+      v-if="isLoading"
       slot="end"
       :class="iconOnly ? '' : 'ion-margin-start'"
       :name="spinnerName"
-      v-if="isLoading"
     ></ion-spinner>
     <ion-ripple-effect type="unbounded"></ion-ripple-effect>
   </ion-button>
@@ -34,11 +36,11 @@ import {
   IonIcon,
   IonSpinner,
   IonRippleEffect,
-} from '@ionic/vue';
-import { useRouter } from 'vue-router';
+} from "@ionic/vue";
+import { useRouter } from "vue-router";
 
 export default {
-  name: 'Button',
+  name: "Button",
   components: {
     IonButton,
     IonLabel,
@@ -49,7 +51,7 @@ export default {
   props: {
     color: {
       type: String,
-      default: 'primary',
+      default: "primary",
     },
     text: {
       type: String,
@@ -57,11 +59,11 @@ export default {
     },
     expand: {
       type: String,
-      default: 'block',
+      default: "block",
     },
     size: {
       type: String,
-      default: 'medium',
+      default: "medium",
     },
     icon: {
       default: null,
@@ -81,7 +83,7 @@ export default {
     },
     spinnerName: {
       type: String,
-      default: 'crescent',
+      default: "crescent",
     },
     iconOnly: {
       type: Boolean,
@@ -89,7 +91,7 @@ export default {
     },
     fill: {
       type: String,
-      default: 'solid',
+      default: "solid",
     },
     to: {
       required: false,
@@ -103,15 +105,15 @@ export default {
       required: false,
     },
   },
-  computed: {
-    hasIcon() {
-      return (this.icon || this.iosIcon || this.mdIcon);
-    },
-  },
   setup() {
     const router = useRouter();
 
     return { router };
+  },
+  computed: {
+    hasIcon() {
+      return this.icon || this.iosIcon || this.mdIcon;
+    },
   },
   methods: {
     redirectToRoute() {

@@ -15,7 +15,8 @@
         <ion-col size="12" class="my-3">
           <Image />
           <ion-text class="fs-14 text-center" color="medium">
-            <kbd>ion-img</kbd> component with default image in case of errors on loading
+            <kbd>ion-img</kbd> component with default image in case of errors on
+            loading
           </ion-text>
         </ion-col>
         <ion-col size="12" class="d-flex align-items-center">
@@ -23,7 +24,7 @@
           <Loading loading />
         </ion-col>
         <ion-col size="12" class="my-3">
-          <NoContent text="Content not found &#x1F622" />
+          <NoContent text="Content not found &#x1F622;" />
         </ion-col>
         <ion-col size="12">
           <Divider>Whatsapp components</Divider>
@@ -32,18 +33,15 @@
         <ion-col size="12">
           <Divider>Inputs</Divider>
           <File class="mb-2" />
-          <File open-camera label="Open camera and gallery"  class="mb-2" />
-          <SelectExample multiple v-model="fields.selectExample" />
+          <File open-camera label="Open camera and gallery" class="mb-2" />
+          <SelectExample v-model="fields.selectExample" multiple />
         </ion-col>
         <ion-col size="12">
           <Divider>Composables</Divider>
           <Button
             text="Open toast"
             color="tertiary"
-            @click="openToast(
-              'Toast with composition API',
-              'tertiary'
-            )"
+            @click="openToast('Toast with composition API', 'tertiary')"
           />
         </ion-col>
         <ion-col size="12"></ion-col>
@@ -54,26 +52,24 @@
 </template>
 
 <script>
-import {
-  IonGrid, IonRow, IonCol, IonText,
-} from '@ionic/vue';
+import { IonGrid, IonRow, IonCol, IonText } from "@ionic/vue";
 
-import Buttons from './examples/Buttons.vue';
-import Whatsapp from './examples/Whatsapp.vue';
+import Buttons from "./examples/Buttons.vue";
+import Whatsapp from "./examples/Whatsapp.vue";
 
-import Divider from '../../components/Divider.vue';
-import ErrorMessage from '../../components/ErrorMessage.vue';
-import Image from '../../components/Image.vue';
-import Loading from '../../components/Loading.vue';
-import NoContent from '../../components/NoContent.vue';
-import File from '../../components/inputs/File.vue';
-import SelectExample from '../../components/inputs/SelectExample.vue';
-import Button from '../../components/Button.vue';
-import useToast from '../../composition/useToast';
-import { ref } from '@vue/runtime-core';
+import Divider from "../../components/Divider.vue";
+import ErrorMessage from "../../components/ErrorMessage.vue";
+import Image from "../../components/Image.vue";
+import Loading from "../../components/Loading.vue";
+import NoContent from "../../components/NoContent.vue";
+import File from "../../components/inputs/File.vue";
+import SelectExample from "../../components/inputs/SelectExample.vue";
+import Button from "../../components/Button.vue";
+import useToast from "../../composition/useToast";
+import { ref } from "@vue/runtime-core";
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
     IonGrid,
     IonRow,
@@ -93,7 +89,7 @@ export default {
   setup() {
     const { openToast } = useToast();
 
-    const fields = ref({ selectExample: '' });
+    const fields = ref({ selectExample: "" });
 
     return {
       openToast,

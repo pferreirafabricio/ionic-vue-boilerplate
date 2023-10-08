@@ -1,19 +1,19 @@
 <template>
   <div>
     <ion-spinner
+      v-if="loading"
       class="d-block mx-auto"
       :name="name"
       color="primary"
-      v-if="loading"
     ></ion-spinner>
   </div>
 </template>
 
 <script>
-import { IonSpinner } from '@ionic/vue';
+import { IonSpinner } from "@ionic/vue";
 
 export default {
-  name: 'Loading',
+  name: "Loading",
   components: {
     IonSpinner,
   },
@@ -24,7 +24,7 @@ export default {
     },
     name: {
       type: String,
-      default: 'crescent',
+      default: "crescent",
     },
   },
 };

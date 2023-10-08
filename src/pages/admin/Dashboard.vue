@@ -1,13 +1,10 @@
 <template>
-  <base-layout>
-    Admin Dashboard
-  </base-layout>
+  <base-layout> Admin Dashboard </base-layout>
 </template>
 
 <script>
 export default {
-  name: 'AdminDashboard',
-  components: {
-  },
+  name: "AdminDashboard",
+  components: {},
 };
 </script>

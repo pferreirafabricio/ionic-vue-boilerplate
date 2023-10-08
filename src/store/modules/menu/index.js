@@ -1,5 +1,5 @@
-import state from './state';
-import getters from './getters';
+import state from "./state";
+import getters from "./getters";
 
 export default {
   namespaced: true,

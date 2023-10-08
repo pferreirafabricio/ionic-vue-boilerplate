@@ -11,16 +11,14 @@
 </template>
 
 <script>
-import {
-  IonImg, IonSpinner, IonLabel, IonItem, IonText,
-} from '@ionic/vue';
+import { IonImg, IonSpinner, IonLabel, IonItem, IonText } from "@ionic/vue";
 
-import { useRouter } from 'vue-router';
-import { mapActions } from 'vuex';
-import { Storage } from '@capacitor/storage';
+import { useRouter } from "vue-router";
+import { mapActions } from "vuex";
+import { Storage } from "@capacitor/storage";
 
 export default {
-  name: 'Logout',
+  name: "Logout",
   components: {
     IonImg,
     IonSpinner,
@@ -35,20 +33,20 @@ export default {
     return {
       router,
       timer,
-      image: 'assets/vectors/join.svg',
+      image: "assets/vectors/join.svg",
     };
   },
   mounted() {
     this.logout();
   },
   methods: {
-    ...mapActions('user', ['cleanUserData']),
+    ...mapActions("user", ["cleanUserData"]),
     logout() {
       setTimeout(async () => {
         await Storage.clear();
         await this.cleanUserData();
-        await this.emitter.emit('logged');
-        await this.router.push({ name: 'home' });
+        await this.emitter.emit("logged");
+        await this.router.push({ name: "home" });
       }, 1500);
     },
   },

@@ -1,5 +1,5 @@
-import redirectToHome from './redirectToHome';
-import useToast from './useToast';
+import redirectToHome from "./redirectToHome";
+import useToast from "./useToast";
 
 export default function () {
   const { openToast } = useToast();
@@ -11,9 +11,10 @@ export default function () {
       password: userCredentials.password,
     };
 
-    return this.$store.dispatch('login/login', data)
+    return this.$store
+      .dispatch("login/login", data)
       .then((response) => {
-        openToast('Logged with sucess', 'success', 'top');
+        openToast("Logged with sucess", "success", "top");
 
         redirectTo(
           response.data.userType,
@@ -24,7 +25,7 @@ export default function () {
         return Promise.resolve();
       })
       .catch(() => {
-        openToast('Something was wrong on login', 'danger', 'top');
+        openToast("Something was wrong on login", "danger", "top");
         Promise.reject();
       });
   }

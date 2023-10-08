@@ -8,10 +8,10 @@
       <ion-item>
         <ion-label position="floating">Email</ion-label>
         <ion-input
+          v-model="email"
           required
           clear-input
           type="email"
-          v-model="email"
           @input="Errors.email = ''"
         ></ion-input>
       </ion-item>
@@ -19,7 +19,7 @@
       <Button
         class="mt-3"
         text="Recover"
-        :isLoading="loading"
+        :is-loading="loading"
         @click="sendRecoveryEmail()"
       />
     </div>
@@ -33,18 +33,18 @@
 </template>
 
 <script>
-import { IonInput, IonItem, IonLabel } from '@ionic/vue';
+import { IonInput, IonItem, IonLabel } from "@ionic/vue";
 
-import { ref } from 'vue';
-import { mapActions } from 'vuex';
+import { ref } from "vue";
+import { mapActions } from "vuex";
 
-import useToast from 'Composition/useToast';
+import useToast from "Composition/useToast";
 
-import Button from '../components/Button.vue';
-import NoContent from '../components/NoContent.vue';
+import Button from "../components/Button.vue";
+import NoContent from "../components/NoContent.vue";
 
 export default {
-  name: 'RecoverPassword',
+  name: "RecoverPassword",
   components: {
     Button,
     NoContent,
@@ -55,12 +55,12 @@ export default {
   setup() {
     const { openToast } = useToast();
 
-    const email = ref('');
+    const email = ref("");
     const wasSent = ref(false);
     const loading = ref(false);
 
     const Errors = ref({
-      email: '',
+      email: "",
     });
 
     return {
@@ -72,10 +72,10 @@ export default {
     };
   },
   methods: {
-    ...mapActions('user', ['sendRecoveryPasswordEmail']),
+    ...mapActions("user", ["sendRecoveryPasswordEmail"]),
     sendRecoveryEmail() {
       if (!this.email) {
-        this.Errors.email = 'Digite um email válido';
+        this.Errors.email = "Digite um email válido";
         return;
       }
 
@@ -83,12 +83,15 @@ export default {
 
       this.sendRecoveryPasswordEmail(this.email)
         .then(() => {
-          this.openToast('Recover email sent', 'success');
+          this.openToast("Recover email sent", "success");
 
           this.wasSent = true;
         })
         .catch(() => {
-          this.openToast('Something was wrong to send the recover email', 'danger');
+          this.openToast(
+            "Something was wrong to send the recover email",
+            "danger",
+          );
         })
         .finally(() => {
           this.loading = false;

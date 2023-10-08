@@ -6,17 +6,12 @@
 </template>
 
 <script>
-import {
-  openOutline,
-  logoWhatsapp,
-} from 'ionicons/icons';
+import { openOutline, logoWhatsapp } from "ionicons/icons";
 
-import {
-  IonIcon,
-} from '@ionic/vue';
+import { IonIcon } from "@ionic/vue";
 
 export default {
-  name: 'WhatsappLink',
+  name: "WhatsappLink",
   components: {
     IonIcon,
   },
@@ -27,7 +22,7 @@ export default {
     },
     message: {
       type: String,
-      default: '',
+      default: "",
     },
   },
   setup() {
@@ -42,6 +37,9 @@ export default {
 <style scoped>
 a {
   text-decoration: none;
-  color:  var(--ion-card-color, var(--ion-item-color, var(--ion-color-step-550, #737373)));
+  color: var(
+    --ion-card-color,
+    var(--ion-item-color, var(--ion-color-step-550, #737373))
+  );
 }
 </style>

@@ -10,8 +10,8 @@ const store = createStore({
     general,
     login,
     user,
-    menu
-  }
+    menu,
+  },
 });
 
 export default store;

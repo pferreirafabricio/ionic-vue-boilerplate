@@ -7,15 +7,12 @@
 </template>
 
 <script>
-import {
-  IonItem, IonCol, IonRow,
-} from '@ionic/vue';
+import { IonCol, IonRow } from "@ionic/vue";
 
 export default {
-  name: 'Divider',
+  name: "Divider",
   components: {
     IonCol,
-    IonItem,
     IonRow,
   },
 };
@@ -28,17 +25,18 @@ export default {
   text-align: center;
 }
 
-.separator::before, .separator::after {
-  content: '';
+.separator::before,
+.separator::after {
+  content: "";
   flex: 1;
   border-bottom: 1px solid var(--ion-color-medium);
 }
 
 .separator::before {
-  margin-right: .50em;
+  margin-right: 0.5em;
 }
 
 .separator::after {
-  margin-left: .50em;
+  margin-left: 0.5em;
 }
 </style>

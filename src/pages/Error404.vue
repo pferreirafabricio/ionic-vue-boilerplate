@@ -9,22 +9,19 @@
     <ion-item class="text" lines="none">
       <ion-text>
         It appears that the screen you are looking for does not exist or is not
-        currently available.
-        &#x1F614;
+        currently available. &#x1F614;
       </ion-text>
     </ion-item>
   </base-layout>
 </template>
 
 <script>
-import {
-  IonImg, IonText, IonItem,
-} from '@ionic/vue';
+import { IonImg, IonText, IonItem } from "@ionic/vue";
 
-import BaseLayout from '../components/base/BaseLayout.vue';
+import BaseLayout from "../components/base/BaseLayout.vue";
 
 export default {
-  name: 'Error404',
+  name: "Error404",
   components: {
     BaseLayout,
     IonImg,
@@ -33,7 +30,7 @@ export default {
   },
   setup() {
     return {
-      image: 'assets/vectors/404.svg',
+      image: "assets/vectors/404.svg",
     };
   },
 };

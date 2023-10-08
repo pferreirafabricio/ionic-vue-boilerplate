@@ -6,33 +6,33 @@ import {
   home,
   alertCircle,
   nuclear,
-} from 'ionicons/icons';
+} from "ionicons/icons";
 
-import UserTypes from '../../../enums/UserTypes';
+import UserTypes from "../../../enums/UserTypes";
 
 export default {
   /**
    * These items will be shown all the time, whether the user is logged in
    * or not
-  */
+   */
   publicItems: [
     {
-      title: 'Contact',
-      url: '/contact',
+      title: "Contact",
+      url: "/contact",
       icon: call,
     },
     {
-      title: 'Not found',
-      url: '/any-router-that-dont-exists',
+      title: "Not found",
+      url: "/any-router-that-dont-exists",
       icon: alertCircle,
     },
     {
-      title: 'Not authorized',
-      url: '/not-authorized',
+      title: "Not authorized",
+      url: "/not-authorized",
       icon: nuclear,
     },
     {
-      title: 'Division',
+      title: "Division",
       type: 2,
     },
   ],
@@ -41,32 +41,32 @@ export default {
    */
   withoutAuth: [
     {
-      title: 'Home',
-      url: '/home',
+      title: "Home",
+      url: "/home",
       icon: home,
     },
     {
-      title: 'Division',
+      title: "Division",
       type: 2,
     },
     {
-      title: 'Login',
-      url: '/login',
+      title: "Login",
+      url: "/login",
       icon: enter,
     },
     /** Logout function is only in withoutAuth for demonstrations purposes */
     {
-      title: 'Logout',
-      url: '/logout',
+      title: "Logout",
+      url: "/logout",
       icon: power,
     },
     {
-      title: 'Register',
-      url: '/register',
+      title: "Register",
+      url: "/register",
       icon: personAdd,
     },
     {
-      title: 'Division',
+      title: "Division",
       type: 2,
     },
   ],
@@ -75,8 +75,8 @@ export default {
    */
   needAuth: [
     {
-      title: 'Logout',
-      url: '/logout',
+      title: "Logout",
+      url: "/logout",
       icon: power,
     },
   ],
@@ -85,23 +85,23 @@ export default {
    */
   [UserTypes.CLIENT]: [
     {
-      title: 'Home',
-      url: '/client/home',
+      title: "Home",
+      url: "/client/home",
       icon: home,
     },
     {
-      title: 'Division',
+      title: "Division",
       type: 2,
     },
   ],
   [UserTypes.ADMINISTRATOR]: [
     {
-      title: 'Dashboard',
-      url: '/admin/dashboard',
+      title: "Dashboard",
+      url: "/admin/dashboard",
       icon: home,
     },
     {
-      title: 'Division',
+      title: "Division",
       type: 2,
     },
   ],

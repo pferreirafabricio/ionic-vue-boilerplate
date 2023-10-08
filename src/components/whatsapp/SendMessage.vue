@@ -5,22 +5,20 @@
     :href="`https://wa.me/${getWhatsappTelephone}?text=${message}`"
     :size="size"
     :icon="Icon.logoWhatsapp"
-    :iconOnly="iconOnly"
+    :icon-only="iconOnly"
   />
 </template>
 
 <script>
-import {
-  logoWhatsapp,
-} from 'ionicons/icons';
+import { logoWhatsapp } from "ionicons/icons";
 
-import { ref } from 'vue';
-import { mapGetters } from 'vuex';
+import { ref } from "vue";
+import { mapGetters } from "vuex";
 
-import Button from '../Button.vue';
+import Button from "../Button.vue";
 
 export default {
-  name: 'SendMessage',
+  name: "SendMessage",
   components: {
     Button,
   },
@@ -35,17 +33,15 @@ export default {
     },
     buttonText: {
       type: String,
-      default: 'Send message',
+      default: "Send message",
     },
     size: {
       type: String,
-      default: 'medium',
+      default: "medium",
     },
   },
   computed: {
-    ...mapGetters('general', [
-      'getWhatsappTelephone',
-    ]),
+    ...mapGetters("general", ["getWhatsappTelephone"]),
   },
   setup() {
     const Icon = ref({

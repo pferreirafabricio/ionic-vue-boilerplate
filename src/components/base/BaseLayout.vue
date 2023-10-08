@@ -5,24 +5,24 @@
         <ion-buttons slot="start">
           <div v-if="pageDefaultBackLink">
             <ion-back-button
-              text="Back"
               v-if="!ignoreHistory"
+              text="Back"
               :default-href="pageDefaultBackLink"
             ></ion-back-button>
             <ion-back-button
               v-else
               text="Back"
-              @click.prevent="back()"
               default-href=""
+              @click.prevent="back()"
             ></ion-back-button>
           </div>
           <ion-menu-button
-            color="primary"
             v-show="showMenuButton"
+            color="primary"
           ></ion-menu-button>
-        <ion-text class="ml-4 font-weight-bold">{{ pageTitle }}</ion-text>
+          <ion-text class="ml-4 font-weight-bold">{{ pageTitle }}</ion-text>
         </ion-buttons>
-        <ion-buttons class="ml-auto" slot="end">
+        <ion-buttons slot="end" class="ml-auto">
           <slot name="actions-end"></slot>
         </ion-buttons>
       </ion-toolbar>
@@ -43,11 +43,21 @@ import {
   IonButtons,
   IonMenuButton,
   IonText,
-} from '@ionic/vue';
-import { useRouter } from 'vue-router';
+} from "@ionic/vue";
+import { useRouter } from "vue-router";
 
 export default {
-  name: 'BaseLayout',
+  name: "BaseLayout",
+  components: {
+    IonText,
+    IonPage,
+    IonHeader,
+    IonToolbar,
+    IonContent,
+    IonBackButton,
+    IonButtons,
+    IonMenuButton,
+  },
   props: {
     pageTitle: {
       type: String,
@@ -69,16 +79,6 @@ export default {
       type: String,
       required: false,
     },
-  },
-  components: {
-    IonText,
-    IonPage,
-    IonHeader,
-    IonToolbar,
-    IonContent,
-    IonBackButton,
-    IonButtons,
-    IonMenuButton,
   },
   setup() {
     const router = useRouter();

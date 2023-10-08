@@ -25,13 +25,13 @@
 </template>
 
 <script>
-import { ref } from 'vue';
-import { save, arrowRedo, cloudDownload } from 'ionicons/icons';
+import { ref } from "vue";
+import { save, arrowRedo, cloudDownload } from "ionicons/icons";
 
-import Button from '../../../components/Button.vue';
+import Button from "../../../components/Button.vue";
 
 export default {
-  name: 'ButtonsExample',
+  name: "ButtonsExample",
   components: { Button },
   setup() {
     const Icons = ref({
