@@ -17,6 +17,7 @@
         <ion-menu-toggle
           v-for="(menuItem, index) in menuItems"
           :key="`${menuItem.title}${index}`"
+          :auto-hide="false"
         >
           <ion-item
             v-if="menuItem.type !== 2 && menuItem.type !== 'category'"
