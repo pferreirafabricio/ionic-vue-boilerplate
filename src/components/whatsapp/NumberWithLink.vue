@@ -5,33 +5,21 @@
   </a>
 </template>
 
-<script>
-import { openOutline, logoWhatsapp } from "ionicons/icons";
-
+<script setup>
+import { openOutline } from "ionicons/icons";
 import { IonIcon } from "@ionic/vue";
+import { defineProps } from "vue";
 
-export default {
-  name: "WhatsappLink",
-  components: {
-    IonIcon,
+defineProps({
+  telephone: {
+    type: String,
+    required: true,
   },
-  props: {
-    telephone: {
-      type: String,
-      required: true,
-    },
-    message: {
-      type: String,
-      default: "",
-    },
+  message: {
+    type: String,
+    default: "",
   },
-  setup() {
-    return {
-      openOutline,
-      logoWhatsapp,
-    };
-  },
-};
+});
 </script>
 
 <style scoped>

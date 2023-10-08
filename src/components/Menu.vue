@@ -15,7 +15,7 @@
     <ion-content>
       <ion-list id="inbox-list">
         <ion-menu-toggle
-          v-for="(menuItem, index) in menuItems"
+          v-for="(menuItem, index) in appPages"
           :key="`${menuItem.title}${index}`"
           :auto-hide="false"
         >
@@ -58,7 +58,7 @@
   </ion-menu>
 </template>
 
-<script>
+<script setup>
 import {
   openOutline,
   build,
@@ -84,120 +84,94 @@ import {
   IonTitle,
 } from "@ionic/vue";
 
-import { ref } from "vue";
+import { onBeforeUnmount, onMounted, ref,computed } from "vue";
 
-import { mapGetters } from "vuex";
 import { useRouter } from "vue-router";
 
 import { Storage } from "@capacitor/storage";
+import { useMenuStore } from "../store/menu";
+import { useUserStore } from "../store/user";
 
-export default {
-  name: "Menu",
-  components: {
-    IonContent,
-    IonIcon,
-    IonItem,
-    IonLabel,
-    IonList,
-    IonMenu,
-    IonMenuToggle,
-    IonHeader,
-    IonToolbar,
-    IonTitle,
-  },
-  computed: {
-    ...mapGetters("menu", [
-      "getPublic",
-      "getWithoutAuth",
-      "getNeedAuth",
-      "getMenuByUserType",
-    ]),
-    ...mapGetters("user", ["getUserType", "getUserName"]),
-    menuItems() {
-      return this.appPages;
-    },
-  },
-  setup() {
-    const selectedIndex = ref(0);
-    const isLoggedIn = ref(false);
-    const router = useRouter();
-    const userName = ref("");
+const menuStore = useMenuStore();
+const userStore = useUserStore();
 
-    const Icon = ref({
-      build,
-      paperPlane,
-      wallet,
-      megaphone,
-      book,
-      personAdd,
-      power,
-      enter,
-      openOutline,
-    });
+const getPublic = computed(() => menuStore.getPublic);
+const getWithoutAuth = computed(() => menuStore.getWithoutAuth);
+const getNeedAuth = computed(() => menuStore.getNeedAuth);
+const getMenuByUserType = computed(() => menuStore.getMenuByUserType);
+const getUserType = computed(() => userStore.getUserType);
+const getUserName = computed(() => userStore.getUserName);
 
-    const appPages = ref([]);
+const selectedIndex = ref(0);
+const isLoggedIn = ref(false);
+const router = useRouter();
+const userName = ref("");
 
-    return {
-      userName,
-      router,
-      Icon,
-      isLoggedIn,
-      selectedIndex,
-      appPages,
-    };
-  },
-  mounted() {
-    this.emitter.on("logged", async () => {
-      await this.mountMenu();
-      this.fillUserName();
-    });
+const Icon = ref({
+  build,
+  paperPlane,
+  wallet,
+  megaphone,
+  book,
+  personAdd,
+  power,
+  enter,
+  openOutline,
+});
 
-    this.mountMenu();
-    this.fillUserName();
-  },
-  beforeUnmount() {
-    this.mountMenu();
-  },
-  methods: {
-    async verifyIsLoggedIn() {
-      const token = await Storage.get({ key: "token" });
-      this.isLoggedIn = !!token.value;
-    },
-    async mountMenu() {
-      await this.verifyIsLoggedIn();
+const appPages = ref([]);
 
-      let userType = await this.getUserType;
-      userType = await this.getUserType;
+onMounted(() => {
+  this.emitter.on("logged", async () => {
+    await mountMenu();
+    fillUserName();
+  });
 
-      const userMenuItems = await this.getMenuByUserType(userType);
+  mountMenu();
+  fillUserName();
+});
 
-      this.appPages = [
-        ...(this.isLoggedIn && userMenuItems ? userMenuItems : []),
-        ...(this.isLoggedIn ? this.getNeedAuth : this.getWithoutAuth),
-        ...this.getPublic,
-      ];
+onBeforeUnmount(() => {
+  mountMenu();
+});
 
-      this.$forceUpdate();
-    },
-    redirect(index, menuItem) {
-      this.selectedIndex = index;
+async function verifyIsLoggedIn() {
+  const token = await Storage.get({ key: "token" });
+  isLoggedIn.value = !!token.value;
+}
 
-      if (menuItem.link) {
-        window.open(menuItem.link, "_blank");
-        return;
-      }
+async function mountMenu() {
+  await verifyIsLoggedIn();
 
-      // eslint-disable-next-line no-unused-expressions
-      menuItem.url !== "/logout"
-        ? this.router.push(menuItem.url)
-        : (window.location = menuItem.url);
-    },
-    async fillUserName() {
-      const name = await this.getUserName;
-      this.userName = name.split(" ")[0] || "";
-    },
-  },
-};
+  let userType = await getUserType;
+  userType = await getUserType;
+
+  const userMenuItems = await getMenuByUserType(userType);
+
+  appPages.value = [
+    ...(isLoggedIn.value && userMenuItems ? userMenuItems : []),
+    ...(isLoggedIn.value ? getNeedAuth : getWithoutAuth),
+    ...getPublic,
+  ];
+}
+function redirect(index, menuItem) {
+  selectedIndex.value = index;
+
+  if (menuItem.link) {
+    window.open(menuItem.link, "_blank");
+    return;
+  }
+
+  // eslint-disable-next-line no-unused-expressions
+  menuItem.url !== "/logout"
+    ? router.push(menuItem.url)
+    : (window.location = menuItem.url);
+}
+
+async function fillUserName() {
+  const name = await getUserName;
+  userName.value = name.split(" ")[0] || "";
+}
 </script>
 
 <style scoped>

@@ -1,4 +1,5 @@
 import { createApp } from "vue";
+import { createPinia } from 'pinia'
 import { IonicVue } from "@ionic/vue";
 import { Storage } from "@capacitor/storage";
 import mitt from "mitt";
@@ -6,7 +7,6 @@ import { defineCustomElements } from "@ionic/pwa-elements/loader";
 
 import App from "./App.vue";
 import router from "./router";
-import store from "./store";
 
 import redirectToHome from "./composition/redirectToHome";
 
@@ -81,7 +81,11 @@ router.beforeEach(async (to, from, next) => {
   });
 });
 
-const app = createApp(App).use(IonicVue).use(router).use(store);
+const pinia = createPinia();
+const app = createApp(App)
+  .use(IonicVue)
+  .use(router)
+  .use(pinia);
 
 app.config.globalProperties.emitter = mitt();
 

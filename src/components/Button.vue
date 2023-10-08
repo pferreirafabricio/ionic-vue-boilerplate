@@ -29,7 +29,7 @@
   </ion-button>
 </template>
 
-<script>
+<script setup>
 import {
   IonButton,
   IonLabel,
@@ -37,92 +37,76 @@ import {
   IonSpinner,
   IonRippleEffect,
 } from "@ionic/vue";
+import { defineProps, computed } from "vue";
 import { useRouter } from "vue-router";
 
-export default {
-  name: "Button",
-  components: {
-    IonButton,
-    IonLabel,
-    IonIcon,
-    IonSpinner,
-    IonRippleEffect,
+const props = defineProps({
+  color: {
+    type: String,
+    default: "primary",
   },
-  props: {
-    color: {
-      type: String,
-      default: "primary",
-    },
-    text: {
-      type: String,
-      required: false,
-    },
-    expand: {
-      type: String,
-      default: "block",
-    },
-    size: {
-      type: String,
-      default: "medium",
-    },
-    icon: {
-      default: null,
-      required: false,
-    },
-    iosIcon: {
-      default: null,
-      required: false,
-    },
-    mdIcon: {
-      default: null,
-      required: false,
-    },
-    isLoading: {
-      type: Boolean,
-      default: false,
-    },
-    spinnerName: {
-      type: String,
-      default: "crescent",
-    },
-    iconOnly: {
-      type: Boolean,
-      default: false,
-    },
-    fill: {
-      type: String,
-      default: "solid",
-    },
-    to: {
-      required: false,
-    },
-    download: {
-      type: Boolean,
-      default: false,
-    },
-    href: {
-      type: String,
-      required: false,
-    },
+  text: {
+    type: String,
+    required: false,
   },
-  setup() {
-    const router = useRouter();
+  expand: {
+    type: String,
+    default: "block",
+  },
+  size: {
+    type: String,
+    default: "medium",
+  },
+  icon: {
+    default: null,
+    required: false,
+  },
+  iosIcon: {
+    default: null,
+    required: false,
+  },
+  mdIcon: {
+    default: null,
+    required: false,
+  },
+  isLoading: {
+    type: Boolean,
+    default: false,
+  },
+  spinnerName: {
+    type: String,
+    default: "crescent",
+  },
+  iconOnly: {
+    type: Boolean,
+    default: false,
+  },
+  fill: {
+    type: String,
+    default: "solid",
+  },
+  to: {
+    required: false,
+  },
+  download: {
+    type: Boolean,
+    default: false,
+  },
+  href: {
+    type: String,
+    required: false,
+  },
+});
 
-    return { router };
-  },
-  computed: {
-    hasIcon() {
-      return this.icon || this.iosIcon || this.mdIcon;
-    },
-  },
-  methods: {
-    redirectToRoute() {
-      if (!this.to) {
-        return;
-      }
+const hasIcon = computed(() => {
+  return props.icon || props.iosIcon || props.mdIcon;
+});
 
-      this.router.push(this.to);
-    },
-  },
-};
+const router = useRouter();
+
+function redirectToRoute() {
+  if (!this.to) return;
+
+  router.push(this.to);
+}
 </script>

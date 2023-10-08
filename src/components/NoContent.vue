@@ -5,24 +5,18 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { IonImg, IonText } from "@ionic/vue";
+import { defineProps } from "vue";
 
-export default {
-  name: "NoContent",
-  components: {
-    IonImg,
-    IonText,
+defineProps({
+  text: {
+    type: String,
+    default: "Not found &#x1F622",
   },
-  props: {
-    text: {
-      type: String,
-      default: "Not found &#x1F622",
-    },
-    image: {
-      type: String,
-      default: "assets/vectors/join.svg",
-    },
+  image: {
+    type: String,
+    default: "assets/vectors/join.svg",
   },
-};
+});
 </script>

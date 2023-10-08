@@ -36,109 +36,74 @@
   <error-message class="mt-1" :text="Errors.value" />
 </template>
 
-<script>
+<script setup>
 import { close } from "ionicons/icons";
-
 import { IonLabel, IonSelect, IonSelectOption, IonItem } from "@ionic/vue";
+import { onMounted, ref, defineProps, defineEmits, toRefs, watch } from "vue";
 
-import { ref } from "vue";
 import Button from "../Button.vue";
 
-export default {
-  name: "SelectExample",
-  components: {
-    IonLabel,
-    IonSelect,
-    IonSelectOption,
-    IonItem,
-    Button,
-  },
-  props: {
-    okText: {
-      type: String,
-      default: "Select",
-    },
-    cancelText: {
-      type: String,
-      default: "Cancel",
-    },
-    modelValue: {
-      required: true,
-    },
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
-    multiple: {
-      type: Boolean,
-      default: false,
-    },
-    label: {
-      type: String,
-      default: "Select example",
-    },
-    placeholder: {
-      type: String,
-      default: "Select an item",
-    },
-    errorMessage: {
-      type: String,
-      default: "Select a value",
-    },
-  },
-  emits: ["update:modelValue"],
-  setup() {
-    const list = ref([
-      { code: 1, name: "Item A" },
-      { code: 2, name: "Item B" },
-    ]);
+defineEmits(["update:modelValue"]);
 
-    const Fields = ref({
-      value: "",
-    });
-
-    const Errors = ref({
-      value: null,
-    });
-
-    return {
-      close,
-      Fields,
-      Errors,
-      list,
-    };
+const props = defineProps({
+  okText: {
+    type: String,
+    default: "Select",
   },
-  computed: {
-    // ...mapGetters('example', ['getList']),
+  cancelText: {
+    type: String,
+    default: "Cancel",
   },
-  watch: {
-    value(value) {
-      this.Fields.value = value;
-    },
+  modelValue: {
+    required: true,
   },
-  mounted() {
-    this.getCities = [];
-    this.Fields.value = this.value;
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
+  multiple: {
+    type: Boolean,
+    default: false,
+  },
+  label: {
+    type: String,
+    default: "Select example",
+  },
+  placeholder: {
+    type: String,
+    default: "Select an item",
+  },
+  errorMessage: {
+    type: String,
+    default: "Select a value",
+  },
+});
 
-    // this.getListOfSomething();
-  },
-  methods: {
-    // ...mapActions('general', ['getListOfSomething']),
-    validate() {
-      let isValid = true;
+const list = ref([
+  { code: 1, name: "Item A" },
+  { code: 2, name: "Item B" },
+]);
 
-      if (!this.Fields.value) {
-        this.Errors.value = this.errorMessage;
-        isValid = false;
-      }
+const Fields = ref({
+  value: "",
+});
 
-      return isValid;
-    },
-    cleanSelect() {
-      this.Fields.value = null;
-      this.$emit("update:modelValue", this.Fields.value);
-      this.Errors.value = null;
-    },
-  },
-};
+const Errors = ref({
+  value: null,
+});
+
+const { modelValue, errorMessage } = toRefs(props);
+
+watch(modelValue, (value) => {
+  Fields.value = value;
+});
+
+function cleanSelect() {
+  Fields.value = null;
+  this.$emit("update:modelValue", Fields.value);
+  Errors.value = null;
+}
+onMounted(() => {
+  Fields.value = modelValue.value;
+});
 </script>

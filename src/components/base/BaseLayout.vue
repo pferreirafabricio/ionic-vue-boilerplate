@@ -33,7 +33,7 @@
   </ion-page>
 </template>
 
-<script>
+<script setup>
 import {
   IonPage,
   IonHeader,
@@ -44,53 +44,37 @@ import {
   IonMenuButton,
   IonText,
 } from "@ionic/vue";
+import { toRefs, defineProps } from "vue";
 import { useRouter } from "vue-router";
 
-export default {
-  name: "BaseLayout",
-  components: {
-    IonText,
-    IonPage,
-    IonHeader,
-    IonToolbar,
-    IonContent,
-    IonBackButton,
-    IonButtons,
-    IonMenuButton,
+const props = defineProps({
+  pageTitle: {
+    type: String,
+    required: false,
   },
-  props: {
-    pageTitle: {
-      type: String,
-      required: false,
-    },
-    pageDefaultBackLink: {
-      type: String,
-      required: false,
-    },
-    showMenuButton: {
-      type: Boolean,
-      default: true,
-    },
-    ignoreHistory: {
-      type: Boolean,
-      default: false,
-    },
-    className: {
-      type: String,
-      required: false,
-    },
+  pageDefaultBackLink: {
+    type: String,
+    required: false,
   },
-  setup() {
-    const router = useRouter();
+  showMenuButton: {
+    type: Boolean,
+    default: true,
+  },
+  ignoreHistory: {
+    type: Boolean,
+    default: false,
+  },
+  className: {
+    type: String,
+    required: false,
+  },
+});
 
-    return {
-      router,
-    };
-  },
-  methods: {
-    back() {
-      this.router.push(this.pageDefaultBackLink);
-    },
-  },
-};
+const { pageDefaultBackLink } = toRefs(props);
+
+const router = useRouter();
+
+function back() {
+  router.push(pageDefaultBackLink);
+}
 </script>

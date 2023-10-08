@@ -7,34 +7,21 @@
   />
 </template>
 
-<script>
+<script setup>
 import { IonImg } from "@ionic/vue";
+import { defineProps, ref, computed } from "vue";
+import { useGeneralStore } from "../store/general";
 
-import { ref } from "@vue/reactivity";
-import { mapGetters } from "vuex";
+defineProps({
+  src: {
+    type: String,
+    required: false,
+  },
+});
 
-export default {
-  name: "Image",
-  props: {
-    /** The image path or url */
-    src: {
-      type: String,
-      required: false,
-    },
-  },
-  computed: {
-    ...mapGetters("general", ["getImagesAddress"]),
-  },
-  setup() {
-    const imageFailsToLoad = ref(false);
+const generalStore = useGeneralStore();
 
-    return {
-      imageFailsToLoad,
-      defaultImage: "assets/vectors/blank.svg",
-    };
-  },
-  components: {
-    IonImg,
-  },
-};
+const getImagesAddress = computed(() => generalStore.getImagesAddress);
+const imageFailsToLoad = ref(false);
+const defaultImage = "assets/vectors/blank.svg";
 </script>

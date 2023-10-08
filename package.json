@@ -36,9 +36,9 @@
     "axios": "^0.21.1",
     "ionicons": "^5.5.3",
     "mitt": "^2.1.0",
+    "pinia": "^2.1.6",
     "vue": "^3.3.4",
-    "vue-router": "^4.2.5",
-    "vuex": "^4.0.2"
+    "vue-router": "^4.2.5"
   },
   "devDependencies": {
     "@capacitor/cli": "^5.4.1",

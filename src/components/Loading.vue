@@ -9,23 +9,18 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { IonSpinner } from "@ionic/vue";
+import { defineProps } from "vue";
 
-export default {
-  name: "Loading",
-  components: {
-    IonSpinner,
+defineProps({
+  loading: {
+    type: Boolean,
+    default: false,
   },
-  props: {
-    loading: {
-      type: Boolean,
-      default: false,
-    },
-    name: {
-      type: String,
-      default: "crescent",
-    },
+  name: {
+    type: String,
+    default: "crescent",
   },
-};
+});
 </script>

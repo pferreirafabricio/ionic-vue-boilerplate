@@ -4,18 +4,14 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { IonText } from "@ionic/vue";
+import { defineProps } from "vue";
 
-export default {
-  name: "ErrorMessage",
-  components: {
-    IonText,
+defineProps({
+  text: {
+    type: String,
+    default: "Something went wrong",
   },
-  props: {
-    text: {
-      type: String,
-    },
-  },
-};
+});
 </script>

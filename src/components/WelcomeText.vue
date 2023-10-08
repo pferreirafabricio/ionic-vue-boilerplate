@@ -6,29 +6,21 @@
   </div>
 </template>
 
-<script>
-import { ref } from "vue";
-import { mapGetters } from "vuex";
+<script setup>
+import { computed } from "@vue/reactivity";
+import { onMounted, ref } from "vue";
+import { useUserStore } from "../store/user";
 
-export default {
-  name: "WelcomeText",
-  computed: {
-    ...mapGetters("user", ["getUserName"]),
-  },
-  setup() {
-    const firstName = ref("");
+const userStore = useUserStore();
 
-    async function getFirstName() {
-      firstName.value = await this.getUserName;
-    }
+const getUserName = computed(() => userStore.getUserName);
+const firstName = ref("");
 
-    return {
-      firstName,
-      getFirstName,
-    };
-  },
-  mounted() {
-    this.getFirstName();
-  },
-};
+async function getFirstName() {
+  firstName.value = await getUserName.value;
+}
+
+onMounted(() => {
+  getFirstName();
+});
 </script>

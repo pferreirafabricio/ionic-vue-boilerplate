@@ -9,50 +9,40 @@
   />
 </template>
 
-<script>
+<script setup>
 import { logoWhatsapp } from "ionicons/icons";
 
-import { ref } from "vue";
-import { mapGetters } from "vuex";
+import { defineProps, ref, computed } from "vue";
 
 import Button from "../Button.vue";
+import { useGeneralStore } from "../../store/general";
 
-export default {
-  name: "SendMessage",
-  components: {
-    Button,
+defineProps({
+  message: {
+    type: String,
+    required: true,
   },
-  props: {
-    message: {
-      type: String,
-      required: true,
-    },
-    iconOnly: {
-      type: Boolean,
-      default: false,
-    },
-    buttonText: {
-      type: String,
-      default: "Send message",
-    },
-    size: {
-      type: String,
-      default: "medium",
-    },
+  iconOnly: {
+    type: Boolean,
+    default: false,
   },
-  computed: {
-    ...mapGetters("general", ["getWhatsappTelephone"]),
+  buttonText: {
+    type: String,
+    default: "Send message",
   },
-  setup() {
-    const Icon = ref({
-      logoWhatsapp,
-    });
+  size: {
+    type: String,
+    default: "medium",
+  },
+});
 
-    return {
-      Icon,
-    };
-  },
-};
+const generalStore = useGeneralStore();
+
+const getWhatsappTelephone = computed(() => generalStore.getWhatsappTelephone);
+
+const Icon = ref({
+  logoWhatsapp,
+});
 </script>
 
 <style scoped>

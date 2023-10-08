@@ -1,17 +1,8 @@
-import {
-  personAdd,
-  power,
-  enter,
-  call,
-  home,
-  alertCircle,
-  nuclear,
-} from "ionicons/icons";
+import { defineStore } from 'pinia'
 
-import UserTypes from "../../../enums/UserTypes";
-
-export default {
-  /**
+export const useMenuStore = defineStore('menu', {
+  state: () => ({
+    /**
    * These items will be shown all the time, whether the user is logged in
    * or not
    */
@@ -105,4 +96,17 @@ export default {
       type: 2,
     },
   ],
-};
+  }),
+  getters: {
+    getPublic(state) {
+      return state.publicItems;
+    },
+    getWithoutAuth(state) {
+      return state.withoutAuth;
+    },
+    getNeedAuth(state) {
+      return state.needAuth;
+    },
+    getMenuByUserType: (state) => (userType) => state[userType] || [],
+  }
+})

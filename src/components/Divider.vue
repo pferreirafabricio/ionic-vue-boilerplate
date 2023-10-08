@@ -6,16 +6,8 @@
   </ion-row>
 </template>
 
-<script>
+<script setup>
 import { IonCol, IonRow } from "@ionic/vue";
-
-export default {
-  name: "Divider",
-  components: {
-    IonCol,
-    IonRow,
-  },
-};
 </script>
 
 <style scoped>
