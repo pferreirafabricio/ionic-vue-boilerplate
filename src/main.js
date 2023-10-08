@@ -91,7 +91,6 @@ const app = createApp(App)
   .use(store);
 
 app.config.globalProperties.emitter = mitt();
-app.config.globalProperties.$validate = Utils.validations;
 
 app.component('base-layout', BaseLayout);
 app.component('error-message', ErrorMessage);

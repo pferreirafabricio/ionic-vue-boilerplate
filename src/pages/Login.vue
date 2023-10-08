@@ -184,9 +184,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.facebook-button .button-native {
-  --background: var(--facebook-blue);
-}
-</style>

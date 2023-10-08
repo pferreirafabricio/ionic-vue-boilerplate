@@ -75,7 +75,7 @@ export default {
    */
   needAuth: [
     {
-      title: 'Sair',
+      title: 'Logout',
       url: '/logout',
       icon: power,
     },
