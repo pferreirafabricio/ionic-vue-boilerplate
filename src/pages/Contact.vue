@@ -53,7 +53,7 @@
       </ion-col>
       <ion-col
         size="12"
-        class="d-flex align-items-center justify-content-around"
+        class="ion-align-items-center ion-justify-content-around"
       >
         <a href="https://www.facebook.com" target="_blank">
           <ion-icon :icon="Icon.logoFacebook" class="fs-32"></ion-icon>

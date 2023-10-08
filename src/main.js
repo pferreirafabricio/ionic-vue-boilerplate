@@ -33,9 +33,6 @@ import "@ionic/vue/css/display.css";
 /* Theme variables */
 import "./theme/index.css";
 
-/* Bootstrap utilities */
-import "./assets/css/bootstrap-grid.min.css";
-
 router.beforeEach(async (to, from, next) => {
   const user = await Storage.get({ key: "user" });
   let lUserId = 0;

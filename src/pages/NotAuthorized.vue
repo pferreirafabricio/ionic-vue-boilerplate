@@ -12,8 +12,7 @@
     </ion-item>
     <ion-item class="text" lines="none">
       <ion-text>
-        You don't have permission<br />
-        to access this page &#x1F62C;
+        You don't have permission to access this page &#x1F62C;
       </ion-text>
     </ion-item>
   </base-layout>
