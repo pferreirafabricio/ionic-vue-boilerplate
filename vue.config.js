@@ -1,9 +1,7 @@
 const path = require("path");
 
 module.exports = {
-  publicPath: process.env.VUE_APP_TO_GITHUB_PAGES
-    ? "/ionic-vue-boilerplate/"
-    : "/",
+  publicPath: process.env.VUE_APP_PUBLIC_PATH || "/",
   devServer: {
     port: process.env.VUE_APP_PORT || "8080",
   },
