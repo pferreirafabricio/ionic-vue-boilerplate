@@ -1,6 +1,6 @@
 <template>
   <ion-button
-    class="d-flex align-items-center justify-content-center ion-activatable ripple-parent"
+    class="btn ion-activatable ripple-parent"
     :color="color"
     :expand="expand"
     :size="size"
@@ -37,7 +37,7 @@ import {
   IonSpinner,
   IonRippleEffect,
 } from "@ionic/vue";
-import { defineProps, computed } from "vue";
+import { defineProps, computed, toRefs } from "vue";
 import { useRouter } from "vue-router";
 
 const props = defineProps({
@@ -86,6 +86,7 @@ const props = defineProps({
     default: "solid",
   },
   to: {
+    type: [String, Object],
     required: false,
   },
   download: {
@@ -98,15 +99,25 @@ const props = defineProps({
   },
 });
 
+const { icon, iosIcon, mdIcon, to } = toRefs(props);
+
 const hasIcon = computed(() => {
-  return props.icon || props.iosIcon || props.mdIcon;
+  return icon.value || iosIcon.value || mdIcon.value;
 });
 
 const router = useRouter();
 
 function redirectToRoute() {
-  if (!this.to) return;
+  if (!to.value) return;
 
-  router.push(this.to);
+  router.push(to.value);
 }
 </script>
+
+<style scoped>
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</style>

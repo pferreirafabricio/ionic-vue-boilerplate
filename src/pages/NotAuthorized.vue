@@ -4,7 +4,7 @@
     :show-menu-button="false"
     :ignore-history="true"
   >
-    <ion-img :src="image"></ion-img>
+    <ion-img src="assets/vectors/cancel.svg"></ion-img>
     <ion-item lines="none">
       <ion-text color="primary" class="mb-3">
         <h1 class="title">Oops!</h1>
@@ -18,22 +18,8 @@
   </base-layout>
 </template>
 
-<script>
+<script setup>
 import { IonImg, IonText, IonItem } from "@ionic/vue";
-
-export default {
-  name: "NotAuthorized",
-  components: {
-    IonItem,
-    IonImg,
-    IonText,
-  },
-  setup() {
-    return {
-      image: "assets/vectors/cancel.svg",
-    };
-  },
-};
 </script>
 
 <style scoped>

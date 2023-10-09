@@ -1,9 +1,11 @@
+import { useLoginStore } from "../store/login";
 import redirectToHome from "./redirectToHome";
 import useToast from "./useToast";
 
 export default function () {
   const { openToast } = useToast();
   const { redirectTo } = redirectToHome();
+  const loginStore = useLoginStore();
 
   async function userLogin(userCredentials) {
     const data = {
@@ -11,8 +13,7 @@ export default function () {
       password: userCredentials.password,
     };
 
-    return this.$store
-      .dispatch("login/login", data)
+    loginStore.login(data)
       .then((response) => {
         openToast("Logged with sucess", "success", "top");
 

@@ -1,6 +1,7 @@
-import { defineStore } from 'pinia'
+import { defineStore } from "pinia";
+import api from "@/api";
 
-export const useLoginStore = defineStore('login', {
+export const useLoginStore = defineStore("login", {
   actions: {
     async setToken(token) {
       await Storage.set({
@@ -22,12 +23,12 @@ export const useLoginStore = defineStore('login', {
       return api
         .post("/login", userCredentials)
         .then(async (response) => {
-          await setToken(response.token);
-          await setUserData(response.data);
-  
+          await this.setToken(response.token);
+          await this.setUserData(response.data);
+
           return response.data;
         })
         .catch((error) => error.response);
     },
-  }
-})
+  },
+});

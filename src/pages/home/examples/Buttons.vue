@@ -24,25 +24,15 @@
   <Button text="Large" :icon="Icons.save" color="warning" size="large" />
 </template>
 
-<script>
+<script setup>
 import { ref } from "vue";
 import { save, arrowRedo, cloudDownload } from "ionicons/icons";
 
-import Button from "../../../components/Button.vue";
+import Button from "@/components/Button.vue";
 
-export default {
-  name: "ButtonsExample",
-  components: { Button },
-  setup() {
-    const Icons = ref({
-      save,
-      arrowRedo,
-      cloudDownload,
-    });
-
-    return {
-      Icons,
-    };
-  },
-};
+const Icons = ref({
+  save,
+  arrowRedo,
+  cloudDownload,
+});
 </script>

@@ -1,6 +1,6 @@
 <template>
   <base-layout page-default-back-link="/home" :show-menu-button="false">
-    <ion-img :src="image"> </ion-img>
+    <ion-img src="assets/vectors/404.svg"> </ion-img>
     <ion-item lines="none">
       <ion-text color="primary" class="mb-3">
         <h1 class="title">Oops!</h1>
@@ -15,25 +15,10 @@
   </base-layout>
 </template>
 
-<script>
+<script setup>
 import { IonImg, IonText, IonItem } from "@ionic/vue";
 
-import BaseLayout from "../components/base/BaseLayout.vue";
-
-export default {
-  name: "Error404",
-  components: {
-    BaseLayout,
-    IonImg,
-    IonText,
-    IonItem,
-  },
-  setup() {
-    return {
-      image: "assets/vectors/404.svg",
-    };
-  },
-};
+import BaseLayout from "../components/base/BaseLayout.vue"
 </script>
 
 <style scoped>

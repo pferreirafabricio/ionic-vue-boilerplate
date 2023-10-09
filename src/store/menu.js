@@ -1,4 +1,15 @@
 import { defineStore } from 'pinia'
+import {
+  personAdd,
+  power,
+  enter,
+  call,
+  home,
+  alertCircle,
+  nuclear,
+} from 'ionicons/icons';
+
+import UserTypes from '../enums/UserTypes';
 
 export const useMenuStore = defineStore('menu', {
   state: () => ({

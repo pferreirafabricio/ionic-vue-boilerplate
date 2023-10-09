@@ -6,46 +6,50 @@
   >
     <ion-row>
       <ion-col size="12">
-        <Image class="mx-auto w-75 mb-4" src="assets/icon/logo.png" />
+        <Image class="w-75 mb-4" src="assets/icon/logo.png" />
       </ion-col>
+    </ion-row>
+    <ion-row>
       <ion-col size="12">
-        <ion-item class="d-flex align-items-end">
-          <ion-icon slot="start" class="mr-2" :icon="Icon.mail"></ion-icon>
-          <ion-label position="floating">Email</ion-label>
+        <ion-item class="form-field">
+          <ion-icon slot="start" :icon="Icon.mail"></ion-icon>
           <ion-input
             v-model="Fields.email"
             clear-input
             required
+            label="E-mail"
             type="email"
+            label-placement="floating"
             inputmode="email"
-            @input="ErrorMessages.email = ''"
+            @input="errorMessages.email = ''"
           ></ion-input>
         </ion-item>
-        <error-message :text="ErrorMessages.email" />
+        <error-message :text="errorMessages.email" />
       </ion-col>
       <ion-col size="12">
-        <ion-item class="d-flex align-items-end">
-          <ion-icon slot="start" class="mr-2" :icon="Icon.key"></ion-icon>
-          <ion-label position="floating">Password</ion-label>
+        <ion-item class="form-field">
+          <ion-icon slot="start" :icon="Icon.key"></ion-icon>
           <ion-input
             v-model="Fields.password"
             required
             name="password"
+            label="Password"
+            label-placement="floating"
             clear-input
             :type="showPassword ? 'text' : 'password'"
-            @input="ErrorMessages.password = ''"
+            @input="errorMessages.password = ''"
           ></ion-input>
           <ion-icon
             slot="end"
-            class="mr-2"
             :icon="showPassword ? Icon.eyeOff : Icon.eye"
+            class="pointer"
             @click="showPassword = !showPassword"
           ></ion-icon>
         </ion-item>
-        <error-message :text="ErrorMessages.password" />
+        <error-message :text="errorMessages.password" />
       </ion-col>
     </ion-row>
-    <ion-row class="mt-3">
+    <ion-row>
       <ion-col size="12">
         <Button
           color="primary"
@@ -58,7 +62,7 @@
     </ion-row>
     <ion-row class="ion-text-center">
       <ion-col size="12">
-        <ion-text color="tertiary" @click="redirectToRecoveryPassword()">
+        <ion-text color="tertiary" class="pointer" @click="redirectToRecoveryPassword()">
           Forgot password?
         </ion-text>
       </ion-col>
@@ -66,7 +70,7 @@
   </base-layout>
 </template>
 
-<script>
+<script setup>
 import { enterOutline, mail, key, logIn, eye, eyeOff } from "ionicons/icons";
 
 import {
@@ -74,108 +78,88 @@ import {
   IonRow,
   IonCol,
   IonItem,
-  IonLabel,
   IonIcon,
   IonText,
 } from "@ionic/vue";
-
-import { mapActions } from "vuex";
 
 import { useRouter } from "vue-router";
 import { ref } from "vue";
 
 import Button from "../components/Button.vue";
 import Image from "../components/Image.vue";
-import useToast from "../composition/useToast";
 import login from "../composition/login";
+import useEmitter from "../composition/useEmitter";
 
-export default {
-  name: "Login",
-  components: {
-    Button,
-    IonInput,
-    IonRow,
-    IonCol,
-    IonItem,
-    IonLabel,
-    IonIcon,
-    IonText,
-    Image,
-  },
-  setup() {
-    const { openToast } = useToast();
-    const { userLogin } = login();
-    const router = useRouter();
+const { emitter } = useEmitter();
+const { userLogin } = login();
+const router = useRouter();
 
-    const showPassword = ref(false);
+const showPassword = ref(false);
 
-    const Icon = ref({
-      mail,
-      key,
-      eye,
-      eyeOff,
-      logIn,
-      enterOutline,
+const Icon = ref({
+  mail,
+  key,
+  eye,
+  eyeOff,
+  logIn,
+  enterOutline,
+});
+
+const Fields = ref({
+  email: "",
+  password: "",
+});
+
+const errorMessages = ref({
+  email: "",
+  password: "",
+});
+
+const loading = ref(false);
+
+function loginUser() {
+  if (!validateFields()) {
+    return;
+  }
+
+  loading.value = true;
+
+  userLogin(Fields)
+    .then(() => {
+      emitter.emit("logged");
+    })
+    .finally(() => {
+      loading.value = false;
     });
+}
+function validateFields() {
+  let valid = true;
 
-    const Fields = ref({
-      email: "",
-      password: "",
-    });
+  if (!Fields.value.email) {
+    errorMessages.value.email = "Email invalid";
+    valid = false;
+  }
 
-    const ErrorMessages = ref({
-      email: "",
-      password: "",
-    });
+  if (!Fields.value.password) {
+    errorMessages.value.password = "Password invalid";
+    valid = false;
+  }
 
-    const loading = ref(false);
+  return valid;
+}
 
-    return {
-      ErrorMessages,
-      openToast,
-      userLogin,
-      loading,
-      router,
-      Fields,
-      Icon,
-      showPassword,
-    };
-  },
-  methods: {
-    ...mapActions("login", ["login"]),
-    loginUser() {
-      if (!this.validateFields()) {
-        return;
-      }
-
-      this.loading = true;
-
-      this.userLogin(this.Fields)
-        .then(() => {
-          this.emitter.emit("logged");
-        })
-        .finally(() => {
-          this.loading = false;
-        });
-    },
-    validateFields() {
-      let valid = true;
-
-      if (!this.Fields.email) {
-        this.ErrorMessages.email = "Email invalid";
-        valid = false;
-      }
-
-      if (!this.Fields.password) {
-        this.ErrorMessages.password = "Password invalid";
-        valid = false;
-      }
-
-      return valid;
-    },
-    redirectToRecoveryPassword() {
-      this.router.push({ name: "recovery-password" });
-    },
-  },
-};
+function redirectToRecoveryPassword() {
+  router.push({ name: "recovery-password" });
+}
 </script>
+
+<style scoped>
+.form-field {
+  display: flex;
+  align-items: center;
+}
+
+.pointer {
+  cursor: pointer;
+}
+</style>

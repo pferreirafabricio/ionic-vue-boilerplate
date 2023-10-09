@@ -2,7 +2,6 @@ import { createApp } from "vue";
 import { createPinia } from 'pinia'
 import { IonicVue } from "@ionic/vue";
 import { Storage } from "@capacitor/storage";
-import mitt from "mitt";
 import { defineCustomElements } from "@ionic/pwa-elements/loader";
 
 import App from "./App.vue";
@@ -35,17 +34,17 @@ import "./theme/index.css";
 
 router.beforeEach(async (to, from, next) => {
   const user = await Storage.get({ key: "user" });
-  let lUserId = 0;
-  let lUserType = 0;
+  let _userId = 0;
+  let _userType = 0;
 
   if (user.value) {
     const { userId, userType } = JSON.parse(user.value);
-    lUserId = userId;
-    lUserType = userType;
+    _userId = userId;
+    _userType = userType;
   }
 
   if (["login", "home", "register"].includes(to.name) && user.value) {
-    next({ name: redirectToHome().routes[lUserType] });
+    next({ name: redirectToHome().routes[_userType] });
     return;
   }
 
@@ -59,20 +58,20 @@ router.beforeEach(async (to, from, next) => {
     return;
   }
 
-  if (!lUserId || !lUserType) {
+  if (!_userId || !_userType) {
     next({ name: "logout" });
     return;
   }
 
-  to.matched.some((route) => {
+  to.matched.forEach((route) => {
     if (typeof route.meta.userType === "object") {
-      if (!route.meta.userType.some((type) => type === lUserType)) {
+      if (!route.meta.userType.some((type) => type === _userType)) {
         next({ name: "not-authorized" });
         return;
       }
     }
 
-    if (!route.meta.userType === lUserType) {
+    if (!route.meta.userType === _userType) {
       next({ name: "not-authorized" });
       return;
     }
@@ -86,8 +85,6 @@ const app = createApp(App)
   .use(IonicVue)
   .use(router)
   .use(pinia);
-
-app.config.globalProperties.emitter = mitt();
 
 app.component("BaseLayout", BaseLayout);
 app.component("ErrorMessage", ErrorMessage);

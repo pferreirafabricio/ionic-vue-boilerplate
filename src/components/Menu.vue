@@ -84,14 +84,16 @@ import {
   IonTitle,
 } from "@ionic/vue";
 
-import { onBeforeUnmount, onMounted, ref,computed } from "vue";
+import { onBeforeUnmount, onMounted, ref, computed } from "vue";
 
 import { useRouter } from "vue-router";
 
 import { Storage } from "@capacitor/storage";
 import { useMenuStore } from "../store/menu";
 import { useUserStore } from "../store/user";
+import useEmitter from "../composition/useEmitter";
 
+const { emitter } = useEmitter();
 const menuStore = useMenuStore();
 const userStore = useUserStore();
 
@@ -122,7 +124,7 @@ const Icon = ref({
 const appPages = ref([]);
 
 onMounted(() => {
-  this.emitter.on("logged", async () => {
+  emitter.on("logged", async () => {
     await mountMenu();
     fillUserName();
   });
@@ -146,12 +148,12 @@ async function mountMenu() {
   let userType = await getUserType;
   userType = await getUserType;
 
-  const userMenuItems = await getMenuByUserType(userType);
+  const userMenuItems = await getMenuByUserType.value(userType.value);
 
   appPages.value = [
     ...(isLoggedIn.value && userMenuItems ? userMenuItems : []),
-    ...(isLoggedIn.value ? getNeedAuth : getWithoutAuth),
-    ...getPublic,
+    ...(isLoggedIn.value ? getNeedAuth.value : getWithoutAuth.value),
+    ...getPublic.value,
   ];
 }
 function redirect(index, menuItem) {
@@ -169,7 +171,10 @@ function redirect(index, menuItem) {
 }
 
 async function fillUserName() {
-  const name = await getUserName;
+  const name = await getUserName.value;
+
+  if (!name) return;
+
   userName.value = name.split(" ")[0] || "";
 }
 </script>

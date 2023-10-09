@@ -44,57 +44,29 @@
             @click="openToast('Toast with composition API', 'tertiary')"
           />
         </ion-col>
-        <ion-col size="12"></ion-col>
-        <ion-col size="12"></ion-col>
       </ion-row>
     </ion-grid>
   </base-layout>
 </template>
 
-<script>
+<script setup>
 import { IonGrid, IonRow, IonCol, IonText } from "@ionic/vue";
 
 import Buttons from "./examples/Buttons.vue";
 import Whatsapp from "./examples/Whatsapp.vue";
 
-import Divider from "../../components/Divider.vue";
-import ErrorMessage from "../../components/ErrorMessage.vue";
-import Image from "../../components/Image.vue";
-import Loading from "../../components/Loading.vue";
-import NoContent from "../../components/NoContent.vue";
-import File from "../../components/inputs/File.vue";
-import SelectExample from "../../components/inputs/SelectExample.vue";
-import Button from "../../components/Button.vue";
-import useToast from "../../composition/useToast";
+import Divider from "@/components/Divider.vue";
+import ErrorMessage from "@/components/ErrorMessage.vue";
+import Image from "@/components/Image.vue";
+import Loading from "@/components/Loading.vue";
+import NoContent from "@/components/NoContent.vue";
+import File from "@/components/inputs/File.vue";
+import SelectExample from "@/components/inputs/SelectExample.vue";
+import Button from "@/components/Button.vue";
+import useToast from "@/composition/useToast";
 import { ref } from "@vue/runtime-core";
 
-export default {
-  name: "Home",
-  components: {
-    IonGrid,
-    IonRow,
-    IonCol,
-    IonText,
-    Buttons,
-    Divider,
-    ErrorMessage,
-    Image,
-    Loading,
-    NoContent,
-    Whatsapp,
-    File,
-    SelectExample,
-    Button,
-  },
-  setup() {
-    const { openToast } = useToast();
+const { openToast } = useToast();
 
-    const fields = ref({ selectExample: "" });
-
-    return {
-      openToast,
-      fields,
-    };
-  },
-};
+const fields = ref({ selectExample: {} });
 </script>

@@ -1,6 +1,6 @@
 <template>
   <base-layout
-    page-title="Contato"
+    page-title="Contact"
     page-default-back-link="/home"
     :show-menu-button="false"
     :ignore-history="true"
@@ -8,22 +8,22 @@
     <ion-row>
       <ion-col size="12">
         <a
-          class="d-flex align-items-center no-text-decoration mb-4 mt-3"
+          class="contact-info no-text-decoration"
           :href="`tel:+55${getWhatsappTelephone}`"
           target="_blank"
         >
-          <ion-icon :icon="Icon.call" class="mr-2 fs-24"></ion-icon>
+          <ion-icon :icon="Icon.call" class="fs-24"></ion-icon>
           <ion-text color="dark" class="fs-20">
             {{ getWhatsappTelephone }}
           </ion-text>
           <br />
         </a>
         <a
-          class="d-flex align-items-center no-text-decoration"
+          class="contact-info no-text-decoration"
           :href="`mailto:${getContactEmail}`"
           target="_blank"
         >
-          <ion-icon :icon="Icon.mail" class="mr-2 fs-24"></ion-icon>
+          <ion-icon :icon="Icon.mail" class="fs-24"></ion-icon>
           <ion-text color="dark" class="fs-20">
             {{ getContactEmail }}
           </ion-text>
@@ -53,7 +53,7 @@
       </ion-col>
       <ion-col
         size="12"
-        class="ion-align-items-center ion-justify-content-around"
+        class="social-medias"
       >
         <a href="https://www.facebook.com" target="_blank">
           <ion-icon :icon="Icon.logoFacebook" class="fs-32"></ion-icon>
@@ -69,8 +69,9 @@
   </base-layout>
 </template>
 
-<script>
+<script setup>
 import { IonIcon, IonText, IonCol, IonRow } from "@ionic/vue";
+import { computed } from "@vue/reactivity";
 import {
   call,
   mail,
@@ -79,34 +80,34 @@ import {
   logoYoutube,
 } from "ionicons/icons";
 import { ref } from "vue";
-import { mapGetters } from "vuex";
 
 import WhatsappButton from "../components/whatsapp/SendMessage.vue";
+import { useGeneralStore } from "../store/general";
 
-export default {
-  name: "Contact",
-  components: {
-    IonText,
-    IonCol,
-    IonRow,
-    WhatsappButton,
-    IonIcon,
-  },
-  computed: {
-    ...mapGetters("general", ["getWhatsappTelephone", "getContactEmail"]),
-  },
-  setup() {
-    const Icon = ref({
-      logoInstagram,
-      logoFacebook,
-      logoYoutube,
-      call,
-      mail,
-    });
+const generalStore = useGeneralStore();
 
-    return {
-      Icon,
-    };
-  },
-};
+const getWhatsappTelephone = computed(() => generalStore.getWhatsappTelephone);
+const getContactEmail = computed(() => generalStore.getContactEmail);
+
+const Icon = ref({
+  logoInstagram,
+  logoFacebook,
+  logoYoutube,
+  call,
+  mail,
+});
 </script>
+
+<style scoped>
+.social-medias {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.contact-info {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+</style>

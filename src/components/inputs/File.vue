@@ -21,7 +21,7 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits } from "vue";
+import { defineProps, defineEmits, ref } from "vue";
 import { IonInput } from "@ionic/vue";
 import { document as documentIcon } from "ionicons/icons";
 
@@ -29,7 +29,7 @@ import usePhotoGallery from "@/composition/usePhotoGallery";
 
 import Button from "../Button.vue";
 
-defineEmits(["files"]);
+const emit = defineEmits(["files"]);
 
 defineProps({
   openCamera: {
@@ -66,21 +66,22 @@ defineProps({
 });
 
 const { takePhoto } = usePhotoGallery();
+const fileInput = ref(null);
 
 function getFiles() {
-  const fileInput = this.$refs.fileInput.$el.getElementsByTagName("input")[0];
-  fileInput.click();
+  const fileSelect = fileInput.value.$el.getElementsByTagName("input")[0];
+  fileSelect.click();
 }
 
 async function getFilesByCamera() {
   const result = await takePhoto();
   const file = dataUriToBlob(result);
 
-  this.$emit("files", [file] || []);
+  emit("files", [file] || []);
 }
 
 function filesChange(event) {
-  this.$emit("files", event.target.files || []);
+  emit("files", event.target.files || []);
 }
 
 function dataUriToBlob(dataURI) {

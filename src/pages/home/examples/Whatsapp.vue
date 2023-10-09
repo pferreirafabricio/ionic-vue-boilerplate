@@ -3,19 +3,13 @@
   <NumberWithLink message="Hi" :telephone="getWhatsappTelephone" />
 </template>
 
-<script>
-import { mapGetters } from "vuex";
-import NumberWithLink from "../../../components/whatsapp/NumberWithLink.vue";
-import SendMessage from "../../../components/whatsapp/SendMessage.vue";
+<script setup>
+import NumberWithLink from "@/components/whatsapp/NumberWithLink.vue";
+import SendMessage from "@/components/whatsapp/SendMessage.vue";
+import { useGeneralStore } from "@/store/general";
+import { computed } from "vue";
 
-export default {
-  name: "WhatsappExamples",
-  computed: {
-    ...mapGetters("general", ["getWhatsappTelephone"]),
-  },
-  components: {
-    SendMessage,
-    NumberWithLink,
-  },
-};
+const generalStore = useGeneralStore();
+
+const getWhatsappTelephone = computed(() => generalStore.getWhatsappTelephone);
 </script>

@@ -1,8 +1,8 @@
 <template>
-  <ion-item class="d-flex align-items-center justify-content-between">
-    <ion-label>{{ label }}</ion-label>
+  <ion-item class="container">
     <ion-select
-      v-model="Fields.value"
+      v-model="fields.value"
+      :label="label"
       :ok-text="okText"
       :cancel-text="cancelText"
       :placeholder="placeholder"
@@ -10,8 +10,8 @@
       :disabled="disabled"
       @ionChange="
         () => {
-          $emit('update:modelValue', Fields.value);
-          Errors.value = null;
+          emit('update:modelValue', fields.value);
+          errors.value = null;
         }
       "
     >
@@ -33,17 +33,17 @@
       @click="cleanSelect()"
     />
   </ion-item>
-  <error-message class="mt-1" :text="Errors.value" />
+  <error-message class="mt-1" :text="errors.value" />
 </template>
 
 <script setup>
 import { close } from "ionicons/icons";
-import { IonLabel, IonSelect, IonSelectOption, IonItem } from "@ionic/vue";
+import { IonSelect, IonSelectOption, IonItem } from "@ionic/vue";
 import { onMounted, ref, defineProps, defineEmits, toRefs, watch } from "vue";
 
 import Button from "../Button.vue";
 
-defineEmits(["update:modelValue"]);
+const emit = defineEmits(["update:modelValue"]);
 
 const props = defineProps({
   okText: {
@@ -84,26 +84,35 @@ const list = ref([
   { code: 2, name: "Item B" },
 ]);
 
-const Fields = ref({
-  value: "",
+const fields = ref({
+  value: {},
 });
 
-const Errors = ref({
+const errors = ref({
   value: null,
 });
 
-const { modelValue, errorMessage } = toRefs(props);
+const { modelValue } = toRefs(props);
 
 watch(modelValue, (value) => {
-  Fields.value = value;
+  fields.value = value || {};
 });
 
 function cleanSelect() {
-  Fields.value = null;
-  this.$emit("update:modelValue", Fields.value);
-  Errors.value = null;
+  fields.value.value = null;
+  emit("update:modelValue", fields.value);
+  errors.value.value = null;
 }
+
 onMounted(() => {
-  Fields.value = modelValue.value;
+  fields.value = modelValue.value || {};
 });
 </script>
+
+<style scoped>
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+</style>
