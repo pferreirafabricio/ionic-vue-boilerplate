@@ -1,5 +1,6 @@
 <template>
   <ion-img
+    v-bind="useAttrs()"
     :src="
       !imageFailsToLoad && !!src ? `${getImagesAddress}/${src}` : defaultImage
     "
@@ -9,7 +10,7 @@
 
 <script setup>
 import { IonImg } from "@ionic/vue";
-import { defineProps, ref, computed } from "vue";
+import { defineProps, ref, computed, useAttrs } from "vue";
 import { useGeneralStore } from "../store/general";
 
 defineProps({

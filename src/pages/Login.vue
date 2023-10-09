@@ -6,7 +6,7 @@
   >
     <ion-row>
       <ion-col size="12">
-        <Image class="w-75 mb-4" src="assets/icon/logo.png" />
+        <Image class="mb-4" style="height: 200px" src="assets/icon/logo.png" />
       </ion-col>
     </ion-row>
     <ion-row>
