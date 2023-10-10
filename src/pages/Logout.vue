@@ -17,9 +17,8 @@ import { useRouter } from "vue-router";
 import { Preferences } from "@capacitor/preferences";
 import { onMounted } from "vue";
 import { useUserStore } from "../store/user";
-import useEmitter from "../composition/useEmitter";
+import emitter from "../plugins/emitter";
 
-const { emitter } = useEmitter();
 const userStore = useUserStore();
 const router = useRouter();
 
@@ -54,3 +53,4 @@ ion-img {
   align-items: center;
 }
 </style>
+./useEmitter../plugins/emitter

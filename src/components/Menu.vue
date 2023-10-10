@@ -86,9 +86,8 @@ import { useRouter } from "vue-router";
 import { Preferences } from "@capacitor/preferences";
 import { useMenuStore } from "../store/menu";
 import { useUserStore } from "../store/user";
-import useEmitter from "../composition/useEmitter";
+import emitter from "../plugins/emitter";
 
-const { emitter } = useEmitter();
 const menuStore = useMenuStore();
 const userStore = useUserStore();
 
@@ -119,8 +118,6 @@ const Icon = ref({
 const appPages = ref([]);
 
 async function handleLogin() {
-  console.log('log')
-  debugger;
   await mountMenu();
   await fillUserName();
 }
@@ -285,3 +282,4 @@ ion-item.selected {
   padding-inline: 0;
 }
 </style>
+../pages/useEmitter../plugins/emitter

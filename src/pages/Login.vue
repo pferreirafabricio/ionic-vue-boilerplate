@@ -91,9 +91,8 @@ import { ref } from "vue";
 import Button from "../components/Button.vue";
 import Image from "../components/Image.vue";
 import login from "../composition/login";
-import useEmitter from "../composition/useEmitter";
+import emitter from "../plugins/emitter";
 
-const { emitter } = useEmitter();
 const { userLogin } = login();
 const router = useRouter();
 
@@ -164,3 +163,4 @@ function redirectToRecoveryPassword() {
   cursor: pointer;
 }
 </style>
+./useEmitter
