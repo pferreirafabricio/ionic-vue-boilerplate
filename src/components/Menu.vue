@@ -88,7 +88,7 @@ import { onBeforeUnmount, onMounted, ref, computed } from "vue";
 
 import { useRouter } from "vue-router";
 
-import { Storage } from "@capacitor/storage";
+import { Preferences } from "@capacitor/preferences";
 import { useMenuStore } from "../store/menu";
 import { useUserStore } from "../store/user";
 import useEmitter from "../composition/useEmitter";
@@ -138,7 +138,7 @@ onBeforeUnmount(() => {
 });
 
 async function verifyIsLoggedIn() {
-  const token = await Storage.get({ key: "token" });
+  const token = await Preferences.get({ key: "token" });
   isLoggedIn.value = !!token.value;
 }
 

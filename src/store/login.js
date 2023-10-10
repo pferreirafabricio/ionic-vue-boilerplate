@@ -4,13 +4,13 @@ import api from "@/api";
 export const useLoginStore = defineStore("login", {
   actions: {
     async setToken(token) {
-      await Storage.set({
+      await Preferences.set({
         key: "token",
         value: token,
       });
     },
     async setUserData(userData) {
-      await Storage.set({
+      await Preferences.set({
         key: "user",
         value: JSON.stringify({
           userId: userData.id,

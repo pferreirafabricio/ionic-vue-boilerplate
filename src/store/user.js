@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { Storage } from "@capacitor/storage";
+import { Preferences } from "@capacitor/preferences";
 import api from "@/api/index";
 
 export const useUserStore = defineStore("user", {
@@ -9,7 +9,7 @@ export const useUserStore = defineStore("user", {
   }),
   getters: {
     async getUserId() {
-      const user = await Storage.get({ key: "user" });
+      const user = await Preferences.get({ key: "user" });
 
       if (!user.value) return 0;
 
@@ -18,7 +18,7 @@ export const useUserStore = defineStore("user", {
       return userId || 0;
     },
     async getUserType() {
-      const user = await Storage.get({ key: "user" });
+      const user = await Preferences.get({ key: "user" });
 
       if (!user.value) return 0;
 
@@ -27,7 +27,7 @@ export const useUserStore = defineStore("user", {
       return userType || 0;
     },
     async getUserName() {
-      const user = await Storage.get({ key: "user" });
+      const user = await Preferences.get({ key: "user" });
 
       if (!user.value) return "";
 

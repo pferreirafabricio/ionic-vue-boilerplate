@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Storage } from "@capacitor/storage";
+import { Preferences } from "@capacitor/preferences";
 
 const baseURL = process.env.VUE_APP_API_URL;
 
@@ -12,7 +12,7 @@ const api = axios.create({
 });
 
 api.interceptors.request.use(async (config) => {
-  const token = await Storage.get({ key: "token" });
+  const token = await Preferences.get({ key: "token" });
   config.headers.Authorization = `Bearer ${token.value || null}`;
 
   return config;

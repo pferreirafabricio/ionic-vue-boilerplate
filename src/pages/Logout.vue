@@ -14,7 +14,7 @@
 import { IonImg, IonSpinner, IonLabel, IonItem, IonText } from "@ionic/vue";
 
 import { useRouter } from "vue-router";
-import { Storage } from "@capacitor/storage";
+import { Preferences } from "@capacitor/preferences";
 import { onMounted } from "vue";
 import { useUserStore } from "../store/user";
 import useEmitter from "../composition/useEmitter";
@@ -29,7 +29,7 @@ onMounted(() => {
 
 function logout() {
   setTimeout(async () => {
-    await Storage.clear();
+    await Preferences.clear();
     userStore.cleanUserData();
     emitter.emit("logged");
     await router.push({ name: "home" });

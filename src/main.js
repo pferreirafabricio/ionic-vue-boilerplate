@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 import { createPinia } from 'pinia'
 import { IonicVue } from "@ionic/vue";
-import { Storage } from "@capacitor/storage";
+import { Preferences } from "@capacitor/preferences";
 import { defineCustomElements } from "@ionic/pwa-elements/loader";
 
 import App from "./App.vue";
@@ -33,7 +33,7 @@ import "@ionic/vue/css/display.css";
 import "./theme/index.css";
 
 router.beforeEach(async (to, from, next) => {
-  const user = await Storage.get({ key: "user" });
+  const user = await Preferences.get({ key: "user" });
   let _userId = 0;
   let _userType = 0;
 
