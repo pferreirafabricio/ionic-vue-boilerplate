@@ -1,15 +1,9 @@
 <template>
   <ion-menu content-id="main-content" type="overlay">
     <ion-header>
-      <ion-toolbar class="ion-text-center" :color="isLoggedIn ? 'primary' : ''">
-        <ion-title v-if="isLoggedIn" class="remove-padding"
-          >Welcome {{ userName }}</ion-title
-        >
-        <!-- <ion-img
-          v-else
-          class="w-50 mx-auto py-2"
-          src="assets/icon/logo.png"
-        /> -->
+      <ion-toolbar class="welcome-container" color="primary">
+        <span>Welcome {{ userName }}</span>
+        <ion-img class="py-2" style="width: 50px" src="/assets/icon/logo.png" />
       </ion-toolbar>
     </ion-header>
     <ion-content>
@@ -77,6 +71,7 @@ import {
   IonItem,
   IonLabel,
   IonList,
+  IonImg,
   IonMenu,
   IonMenuToggle,
   IonHeader,
@@ -84,7 +79,7 @@ import {
   IonTitle,
 } from "@ionic/vue";
 
-import { onBeforeUnmount, onMounted, ref, computed } from "vue";
+import { onBeforeUnmount, onMounted, ref, computed, reactive } from "vue";
 
 import { useRouter } from "vue-router";
 
@@ -107,7 +102,7 @@ const getUserName = computed(() => userStore.getUserName);
 const selectedIndex = ref(0);
 const isLoggedIn = ref(false);
 const router = useRouter();
-const userName = ref("");
+const userName = ref("Guest");
 
 const Icon = ref({
   build,
@@ -123,18 +118,23 @@ const Icon = ref({
 
 const appPages = ref([]);
 
-onMounted(() => {
-  emitter.on("logged", async () => {
-    await mountMenu();
-    fillUserName();
-  });
+async function handleLogin() {
+  console.log('log')
+  debugger;
+  await mountMenu();
+  await fillUserName();
+}
 
-  mountMenu();
-  fillUserName();
+onMounted(async () => {
+  emitter.on("logged", handleLogin);
+
+  await mountMenu();
+  await fillUserName();
 });
 
-onBeforeUnmount(() => {
-  mountMenu();
+onBeforeUnmount(async () => {
+  await mountMenu();
+  emitter.off("logged", handleLogin);
 });
 
 async function verifyIsLoggedIn() {
@@ -145,10 +145,10 @@ async function verifyIsLoggedIn() {
 async function mountMenu() {
   await verifyIsLoggedIn();
 
-  let userType = await getUserType;
-  userType = await getUserType;
+  let userType = await getUserType.value;
+  userType = await getUserType.value;
 
-  const userMenuItems = await getMenuByUserType.value(userType.value);
+  const userMenuItems = getMenuByUserType.value(userType.value);
 
   appPages.value = [
     ...(isLoggedIn.value && userMenuItems ? userMenuItems : []),
@@ -156,6 +156,7 @@ async function mountMenu() {
     ...getPublic.value,
   ];
 }
+
 function redirect(index, menuItem) {
   selectedIndex.value = index;
 
@@ -175,15 +176,21 @@ async function fillUserName() {
 
   if (!name) return;
 
-  userName.value = name.split(" ")[0] || "";
+  userName.value = name.split(" ")[0] || "Guest";
 }
 </script>
 
 <style scoped>
+.welcome-container {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+}
+
 hr {
   border-top: 1px solid var(--ion-color-step-150, #d7d8da);
 }
-
 ion-menu.md ion-content {
   --padding-start: 16px;
   --padding-end: 8px;

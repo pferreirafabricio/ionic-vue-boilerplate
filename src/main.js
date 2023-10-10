@@ -7,8 +7,6 @@ import { defineCustomElements } from "@ionic/pwa-elements/loader";
 import App from "./App.vue";
 import router from "./router";
 
-import redirectToHome from "./composition/redirectToHome";
-
 import BaseLayout from "./components/base/BaseLayout.vue";
 import ErrorMessage from "./components/ErrorMessage.vue";
 import Loading from "./components/Loading.vue";
@@ -31,6 +29,7 @@ import "@ionic/vue/css/display.css";
 
 /* Theme variables */
 import "./theme/index.css";
+import HomeRoutesByUser from "./enums/HomeRoutesByUser";
 
 router.beforeEach(async (to, from, next) => {
   const user = await Preferences.get({ key: "user" });
@@ -44,7 +43,7 @@ router.beforeEach(async (to, from, next) => {
   }
 
   if (["login", "home", "register"].includes(to.name) && user.value) {
-    next({ name: redirectToHome().routes[_userType] });
+    next({ name: HomeRoutesByUser[_userType] });
     return;
   }
 

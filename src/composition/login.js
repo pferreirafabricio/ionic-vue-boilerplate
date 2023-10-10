@@ -13,21 +13,20 @@ export default function () {
       password: userCredentials.password,
     };
 
-    loginStore.login(data)
+    loginStore
+      .login(data)
       .then((response) => {
-        openToast("Logged with sucess", "success", "top");
+        openToast("Logged with success", "success", "top");
 
-        redirectTo(
-          response.data.userType,
-          { anyCustomParams: response.customParams },
-          true,
-        );
+        redirectTo(response.data.userType, {
+          anyCustomParams: response.customParams,
+        });
 
         return Promise.resolve();
       })
-      .catch(() => {
+      .catch((ex) => {
         openToast("Something was wrong on login", "danger", "top");
-        Promise.reject();
+        Promise.reject(ex);
       });
   }
 

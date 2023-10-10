@@ -13,13 +13,15 @@
         <ion-item class="form-field">
           <ion-icon slot="start" :icon="Icon.mail"></ion-icon>
           <ion-input
-            v-model="Fields.email"
+            v-model="fields.email"
             clear-input
             required
             label="E-mail"
             type="email"
             label-placement="floating"
+            tabindex="1"
             inputmode="email"
+            placeholder="admin"
             @input="errorMessages.email = ''"
           ></ion-input>
         </ion-item>
@@ -29,11 +31,13 @@
         <ion-item class="form-field">
           <ion-icon slot="start" :icon="Icon.key"></ion-icon>
           <ion-input
-            v-model="Fields.password"
+            v-model="fields.password"
             required
             name="password"
             label="Password"
+            tabindex="2"
             label-placement="floating"
+            placeholder="admin"
             clear-input
             :type="showPassword ? 'text' : 'password'"
             @input="errorMessages.password = ''"
@@ -104,7 +108,7 @@ const Icon = ref({
   enterOutline,
 });
 
-const Fields = ref({
+const fields = ref({
   email: "",
   password: "",
 });
@@ -117,13 +121,11 @@ const errorMessages = ref({
 const loading = ref(false);
 
 function loginUser() {
-  if (!validateFields()) {
-    return;
-  }
+  if (!validateFields()) return;
 
   loading.value = true;
 
-  userLogin(Fields)
+  userLogin(fields.value)
     .then(() => {
       emitter.emit("logged");
     })
@@ -134,12 +136,12 @@ function loginUser() {
 function validateFields() {
   let valid = true;
 
-  if (!Fields.value.email) {
+  if (!fields.value.email) {
     errorMessages.value.email = "Email invalid";
     valid = false;
   }
 
-  if (!Fields.value.password) {
+  if (!fields.value.password) {
     errorMessages.value.password = "Password invalid";
     valid = false;
   }

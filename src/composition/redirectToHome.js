@@ -1,16 +1,8 @@
 import { useRouter } from "vue-router";
-import UserTypes from "../enums/UserTypes";
+import HomeRoutesByUser from "../enums/HomeRoutesByUser";
 
 export default function () {
   const router = useRouter();
-
-  /**
-   * Default routes to redirect the user
-   */
-  const routes = {
-    [UserTypes.CLIENT]: "client-home",
-    [UserTypes.ADMINISTRATOR]: "admin-home",
-  };
 
   /**
    * Redirect user by type
@@ -22,14 +14,14 @@ export default function () {
   function redirectTo(userTypeId, routeParams, reload = false) {
     if (!reload) {
       router.push({
-        name: routes[userTypeId] || "logout",
+        name: HomeRoutesByUser[userTypeId] || "logout",
         params: routeParams,
       });
       return;
     }
 
     const redirect = router.resolve({
-      name: routes[userTypeId] || "logout",
+      name: HomeRoutesByUser[userTypeId] || "logout",
       params: routeParams,
     });
 
@@ -37,7 +29,6 @@ export default function () {
   }
 
   return {
-    routes,
     redirectTo,
   };
 }

@@ -1,5 +1,8 @@
-import { defineStore } from "pinia";
 import api from "@/api";
+import { Preferences } from "@capacitor/preferences";
+import { defineStore } from "pinia";
+import UserTypes from "../enums/UserTypes";
+import { makeString } from "../utils";
 
 export const useLoginStore = defineStore("login", {
   actions: {
@@ -19,7 +22,17 @@ export const useLoginStore = defineStore("login", {
         }),
       });
     },
-    login({}, userCredentials) {
+    async login(userCredentials) {
+      /**
+       * This is a fake login, you can remove this if
+       */
+      if (
+        userCredentials.email === "admin" &&
+        userCredentials.password === "admin"
+      ) {
+        return await this.fakeLogin();
+      }
+
       return api
         .post("/login", userCredentials)
         .then(async (response) => {
@@ -29,6 +42,23 @@ export const useLoginStore = defineStore("login", {
           return response.data;
         })
         .catch((error) => error.response);
+    },
+    /**
+     * This is a fake login, you can remove this method
+     */
+    async fakeLogin() {
+      await this.setToken(makeString(20));
+      await this.setUserData({
+        id: 1,
+        typeUser: UserTypes.ADMINISTRATOR,
+        userName: "Admin",
+      });
+
+      return {
+        data: {
+          userType: UserTypes.ADMINISTRATOR,
+        },
+      };
     },
   },
 });

@@ -1,9 +1,9 @@
 <template>
   <base-layout :show-menu-button="false" :ignore-history="true">
-    <ion-img :src="image"> </ion-img>
+    <ion-img src="/assets/vectors/join.svg"></ion-img>
     <ion-item class="attention" lines="none">
-      <ion-label class="d-flex align-items-center justify-content-center">
-        <ion-text class="ion-text-uppercase mr-2">Bye</ion-text>
+      <ion-label class="bye-container">
+        <ion-text class="ion-text-uppercase">Bye</ion-text>
         <ion-spinner name="dots"></ion-spinner>
       </ion-label>
     </ion-item>
@@ -46,5 +46,11 @@ ion-img {
   color: var(--ion-color-primary);
   font-size: 20px;
   font-weight: 700;
+}
+
+.bye-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 </style>

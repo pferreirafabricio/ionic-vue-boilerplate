@@ -41,7 +41,7 @@ export const useUserStore = defineStore("user", {
       this.setUserId = 0;
       this.setUserType = 0;
     },
-    sendRecoveryPasswordEmail({}, email) {
+    sendRecoveryPasswordEmail(email) {
       return api.post("/recover-password", { email });
     },
   },
