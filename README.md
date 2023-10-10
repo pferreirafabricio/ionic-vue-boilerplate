@@ -7,6 +7,8 @@
   A simple Ionic app template, using VueJS framework and Capacitor. It brings a simple folder structure and some components.
   <br /><br />
   <a>
+    <img src="https://github.com/pferreirafabricio/ionic-vue-boilerplate/actions/workflows/linting.yml/badge.svg" />
+    <img src="https://github.com/pferreirafabricio/ionic-vue-boilerplate/actions/workflows/deploy.yml/badge.svg" />
     <img alt="License" src="https://img.shields.io/badge/license-MIT-green?style=for-the-badge&labelColor=FF7F80&color=110E23">
   </a>
 </p>
