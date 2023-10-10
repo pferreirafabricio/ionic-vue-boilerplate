@@ -3,7 +3,6 @@
     page-title="Contact"
     page-default-back-link="/home"
     :show-menu-button="false"
-    :ignore-history="true"
   >
     <ion-row>
       <ion-col size="12">
@@ -51,10 +50,7 @@
         <ion-text class="fs-20"> Social medias </ion-text>
         <br />
       </ion-col>
-      <ion-col
-        size="12"
-        class="social-medias"
-      >
+      <ion-col size="12" class="social-medias">
         <a href="https://www.facebook.com" target="_blank">
           <ion-icon :icon="Icon.logoFacebook" class="fs-32"></ion-icon>
         </a>

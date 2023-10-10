@@ -2,7 +2,6 @@
   <base-layout
     page-default-back-link="/home"
     :show-menu-button="false"
-    :ignore-history="true"
   >
     <ion-img src="assets/vectors/cancel.svg"></ion-img>
     <ion-item lines="none">

@@ -2,7 +2,6 @@
   <base-layout
     page-default-back-link="/home"
     :show-menu-button="false"
-    :ignore-history="true"
   >
     <ion-row>
       <ion-col size="12">
