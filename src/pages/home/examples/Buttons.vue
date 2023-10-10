@@ -1,5 +1,4 @@
 <template>
-  <h3 class="font-weight-bold">Buttons</h3>
   <Button text="Simple button" />
   <Button text="With icon" :icon="Icons.save" color="danger" />
   <hr />

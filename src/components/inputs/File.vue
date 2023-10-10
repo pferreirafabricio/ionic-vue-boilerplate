@@ -11,7 +11,7 @@
     <ion-input
       ref="fileInput"
       hidden
-      class="d-none"
+      style="display: none;"
       type="file"
       :multiple="multiple"
       :accept="`${accept};capture=camera`"

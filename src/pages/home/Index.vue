@@ -4,45 +4,36 @@
     <ion-grid>
       <ion-row>
         <ion-col size="12">
-          <Buttons />
-        </ion-col>
-        <ion-col size="12">
-          <Divider>Divider component</Divider>
-        </ion-col>
-        <ion-col size="12">
-          <ErrorMessage text="Error message component" />
-        </ion-col>
-        <ion-col size="12" class="my-3">
-          <Image />
-          <ion-text class="fs-14 text-center" color="medium">
-            <kbd>ion-img</kbd> component with default image in case of errors on
-            loading
-          </ion-text>
-        </ion-col>
-        <ion-col size="12" class="d-flex align-items-center">
-          <ion-text class="mr-2">Loading component</ion-text>
-          <Loading loading />
-        </ion-col>
-        <ion-col size="12" class="my-3">
-          <NoContent text="Content not found &#x1F622;" />
-        </ion-col>
-        <ion-col size="12">
-          <Divider>Whatsapp components</Divider>
-          <Whatsapp />
-        </ion-col>
-        <ion-col size="12">
-          <Divider>Inputs</Divider>
-          <File class="mb-2" />
-          <File open-camera label="Open camera and gallery" class="mb-2" />
-          <SelectExample v-model="fields.selectExample" multiple />
-        </ion-col>
-        <ion-col size="12">
-          <Divider>Composables</Divider>
-          <Button
-            text="Open toast"
-            color="tertiary"
-            @click="openToast('Toast with composition API', 'tertiary')"
-          />
+          <ion-accordion-group>
+            <ion-accordion
+              v-for="component in componentsToShow"
+              :key="component.value"
+              :value="component.value"
+            >
+              <ion-item slot="header" color="light">
+                <ion-label style="margin: 10px">{{
+                  component.label
+                }}</ion-label>
+              </ion-item>
+              <div slot="content" class="ion-padding">
+                <component
+                  :is="component.component"
+                  v-bind="component.props || {}"
+                  v-on="component.events || {}"
+                >
+                  x
+                </component>
+                <ion-text
+                  v-if="component.value === 'image'"
+                  class="fs-14 text-center"
+                  color="medium"
+                >
+                  <kbd>ion-img</kbd> component with default image in case of
+                  errors on loading
+                </ion-text>
+              </div>
+            </ion-accordion>
+          </ion-accordion-group>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -50,7 +41,16 @@
 </template>
 
 <script setup>
-import { IonGrid, IonRow, IonCol, IonText } from "@ionic/vue";
+import {
+  IonGrid,
+  IonRow,
+  IonCol,
+  IonText,
+  IonAccordion,
+  IonAccordionGroup,
+  IonLabel,
+  IonItem,
+} from "@ionic/vue";
 
 import Buttons from "./examples/Buttons.vue";
 import Whatsapp from "./examples/Whatsapp.vue";
@@ -68,5 +68,87 @@ import { ref } from "@vue/runtime-core";
 
 const { openToast } = useToast();
 
-const fields = ref({ selectExample: {} });
+const componentsToShow = [
+  {
+    value: "buttons",
+    label: "Buttons",
+    component: Buttons,
+  },
+  {
+    value: "whatsapp",
+    label: "Whatsapp",
+    component: Whatsapp,
+  },
+  {
+    value: "divider",
+    label: "Divider",
+    component: Divider,
+  },
+  {
+    value: "errorMessage",
+    label: "Error message",
+    component: ErrorMessage,
+  },
+  {
+    value: "image",
+    label: "Image",
+    component: Image,
+  },
+  {
+    value: "loading",
+    label: "Loading",
+    component: Loading,
+    props: {
+      loading: true,
+    },
+  },
+  {
+    value: "noContent",
+    label: "No content",
+    component: NoContent,
+  },
+  {
+    value: "file",
+    label: "File",
+    component: File,
+  },
+  {
+    value: "fileOpenCamera",
+    label: "File open camera",
+    component: File,
+    props: {
+      openCamera: true,
+      label: "Open camera and gallery",
+    },
+  },
+  {
+    value: "selectExample",
+    label: "Select example",
+    component: SelectExample,
+  },
+  {
+    value: "composables",
+    label: "Composables",
+    component: Button,
+    props: {
+      text: "Open toast",
+      color: "tertiary",
+    },
+    events: {
+      click: () => {
+        openToast("Toast with composition API", "tertiary");
+      },
+    },
+  },
+];
 </script>
+
+<style scoped>
+ion-grid {
+  --ion-grid-padding: 0;
+}
+
+ion-col {
+  padding: 0;
+}
+</style>
