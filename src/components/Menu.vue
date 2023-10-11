@@ -76,10 +76,9 @@ import {
   IonMenuToggle,
   IonHeader,
   IonToolbar,
-  IonTitle,
 } from "@ionic/vue";
 
-import { onBeforeUnmount, onMounted, ref, computed, reactive } from "vue";
+import { onBeforeUnmount, onMounted, ref, computed } from "vue";
 
 import { useRouter } from "vue-router";
 
