@@ -27,6 +27,7 @@ onMounted(() => {
 });
 
 function logout() {
+  console.log('logout')
   setTimeout(async () => {
     await Preferences.clear();
     userStore.cleanUserData();

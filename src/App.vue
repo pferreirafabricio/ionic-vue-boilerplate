@@ -2,7 +2,11 @@
   <IonApp>
     <IonSplitPane content-id="main-content">
       <Menu />
-      <ion-router-outlet id="main-content"></ion-router-outlet>
+      <!-- https://stackoverflow.com/a/64682862/12542704 -->
+      <ion-router-outlet
+        id="main-content"
+        :key="$route.fullPath"
+      ></ion-router-outlet>
     </IonSplitPane>
   </IonApp>
 </template>

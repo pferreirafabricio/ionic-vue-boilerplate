@@ -3,7 +3,7 @@
     <ion-header>
       <ion-toolbar class="welcome-container" color="primary">
         <span>Welcome {{ userName }}</span>
-        <ion-img class="py-2" style="width: 50px" src="assets/icon/logo.png" />
+        <Image style="width: 50px" src="assets/icon/logo.png" />
       </ion-toolbar>
     </ion-header>
     <ion-content>
@@ -86,6 +86,7 @@ import { Preferences } from "@capacitor/preferences";
 import { useMenuStore } from "../store/menu";
 import { useUserStore } from "../store/user";
 import emitter from "../plugins/emitter";
+import Image from "../components/Image.vue";
 
 const menuStore = useMenuStore();
 const userStore = useUserStore();
@@ -161,10 +162,7 @@ function redirect(index, menuItem) {
     return;
   }
 
-  // eslint-disable-next-line no-unused-expressions
-  menuItem.url !== "/logout"
-    ? router.push(menuItem.url)
-    : (window.location = menuItem.url);
+  router.push(menuItem.url);
 }
 
 async function fillUserName() {
