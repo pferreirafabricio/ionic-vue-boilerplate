@@ -3,7 +3,7 @@
     <ion-header>
       <ion-toolbar class="welcome-container" color="primary">
         <span>Welcome {{ userName }}</span>
-        <ion-img class="py-2" style="width: 50px" src="/assets/icon/logo.png" />
+        <ion-img class="py-2" style="width: 50px" src="assets/icon/logo.png" />
       </ion-toolbar>
     </ion-header>
     <ion-content>

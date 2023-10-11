@@ -108,8 +108,8 @@ const Icon = ref({
 });
 
 const fields = ref({
-  email: "",
-  password: "",
+  email: "admin",
+  password: "admin",
 });
 
 const errorMessages = ref({
