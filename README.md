@@ -20,16 +20,17 @@
   <img src="./docs/screenshots/home.png" width="auto" height="400px"/>
   <img src="./docs/screenshots/components.png" width="auto" height="400px"/>
   <img src="./docs/screenshots/login.png" width="auto" height="400px"/>
+  <img src="./docs/screenshots/menu.png" width="auto" height="400px"/>
 </div>
 <br/>
 
 > **Note**
 >
-> Take a look in https://pferreirafabricio.github.io/ionic-vue-boilerplate for a live test. OBS: Don't forget to press F12 and toggle device emulation to view it in mobile view.
+> Take a look at https://pferreirafabricio.github.io/ionic-vue-boilerplate for a live test. OBS: Don't forget to press F12 and toggle device emulation to view it in mobile view.
 
 > **Note**
 >
-> If you prefer you can download the .apk file in the [releases page](https://github.com/pferreirafabricio/ionic-vue-boilerplate/releases)
+> If you prefer you can download the .apk file on the [releases page](https://github.com/pferreirafabricio/ionic-vue-boilerplate/releases)
 
 ## 📖 About
 
