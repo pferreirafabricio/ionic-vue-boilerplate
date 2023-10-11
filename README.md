@@ -36,7 +36,7 @@
 
 This project is a boilerplate for building mobile applications using Ionic and Vue. It includes a variety of components and features, such as a login screen, a home screen, and some UI components.
 
-## 🧱 This project was built with:
+## 🧱 This project was built with
 
 - [Ionic](https://ionicframework.com/)
 - [Ionic + Vue](https://ionicframework.com/vue)
