@@ -71,7 +71,6 @@ import {
   IonItem,
   IonLabel,
   IonList,
-  IonImg,
   IonMenu,
   IonMenuToggle,
   IonHeader,
