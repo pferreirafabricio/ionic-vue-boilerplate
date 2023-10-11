@@ -4,7 +4,7 @@
     <ion-grid>
       <ion-row>
         <ion-col size="12">
-          <ion-accordion-group>
+          <ion-accordion-group multiple>
             <ion-accordion
               v-for="component in componentsToShow"
               :key="component.value"

@@ -56,12 +56,6 @@ export const useMenuStore = defineStore('menu', {
       url: "/login",
       icon: enter,
     },
-    /** Logout function is only in withoutAuth for demonstrations purposes */
-    {
-      title: "Logout",
-      url: "/logout",
-      icon: power,
-    },
     {
       title: "Register",
       url: "/register",
