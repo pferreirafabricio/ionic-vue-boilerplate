@@ -16,7 +16,8 @@ jobs:
       - name: Install and Build 🔧
         run: |
           npm ci
-          npm run build:github-pages
+          export VUE_APP_PUBLIC_PATH=/ionic-vue-boilerplate/
+          npm run build
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4

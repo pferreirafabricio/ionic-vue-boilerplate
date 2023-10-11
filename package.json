@@ -13,7 +13,6 @@
     "serve": "vue-cli-service serve",
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build && npm run post:build",
-    "build:github-pages": "VUE_APP_PUBLIC_PATH=/ionic-vue-boilerplate/ vue-cli-service build",
     "build:qa": "vue-cli-service build --dest dist-qa --mode staging && npm run post-build",
     "post:build": "npx cap copy & npx cap sync",
     "resources:android": "npx @capacitor/assets generate --android",
