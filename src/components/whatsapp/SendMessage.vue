@@ -12,10 +12,10 @@
 <script setup>
 import { logoWhatsapp } from "ionicons/icons";
 
-import { defineProps, ref, computed } from "vue";
+import { computed, defineProps, ref } from "vue";
 
-import Button from "../Button.vue";
 import { useGeneralStore } from "../../store/general";
+import Button from "../Button.vue";
 
 defineProps({
   message: {

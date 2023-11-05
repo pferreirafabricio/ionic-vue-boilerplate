@@ -31,13 +31,13 @@
 
 <script setup>
 import {
-  IonButton,
-  IonLabel,
-  IonIcon,
-  IonSpinner,
-  IonRippleEffect,
+IonButton,
+IonIcon,
+IonLabel,
+IonRippleEffect,
+IonSpinner,
 } from "@ionic/vue";
-import { defineProps, computed, toRefs } from "vue";
+import { computed, defineProps, toRefs } from "vue";
 import { useRouter } from "vue-router";
 
 const props = defineProps({

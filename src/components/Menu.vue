@@ -54,38 +54,38 @@
 
 <script setup>
 import {
-  openOutline,
-  build,
-  wallet,
-  book,
-  personAdd,
-  megaphone,
-  power,
-  paperPlane,
-  enter,
+book,
+build,
+enter,
+megaphone,
+openOutline,
+paperPlane,
+personAdd,
+power,
+wallet,
 } from "ionicons/icons";
 
 import {
-  IonContent,
-  IonIcon,
-  IonItem,
-  IonLabel,
-  IonList,
-  IonMenu,
-  IonMenuToggle,
-  IonHeader,
-  IonToolbar,
+IonContent,
+IonHeader,
+IonIcon,
+IonItem,
+IonLabel,
+IonList,
+IonMenu,
+IonMenuToggle,
+IonToolbar,
 } from "@ionic/vue";
 
-import { onBeforeUnmount, onMounted, ref, computed } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 
 import { useRouter } from "vue-router";
 
 import { Preferences } from "@capacitor/preferences";
+import Image from "../components/Image.vue";
+import emitter from "../plugins/emitter";
 import { useMenuStore } from "../store/menu";
 import { useUserStore } from "../store/user";
-import emitter from "../plugins/emitter";
-import Image from "../components/Image.vue";
 
 const menuStore = useMenuStore();
 const userStore = useUserStore();
@@ -214,7 +214,7 @@ ion-menu.md ion-list#labels-list ion-list-header {
 
   margin-bottom: 18px;
 
-  color: #757575;
+  color: #fa0000;
 
   min-height: 26px;
 }
