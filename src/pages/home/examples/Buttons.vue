@@ -5,6 +5,7 @@
 />
 
 <Button
+  class = "icon"
   text="With icon" :icon="Icons.save"
   color="danger"
 />
@@ -67,8 +68,13 @@ const Icons = ref({
 <style scoped>
 .simple:hover {
   transition: transform 0.3s ease, border-radius 0.3s ease;
-  border-radius: 4vh;
-  transform: scale(1.1);
+  transform: scale(1.02);
 }
+
+.icon:hover {
+  transition: transform 0.3s ease, border-radius 0.3s ease;
+  transform: scale(1.02);
+}
+
 </style>
 
