@@ -5,50 +5,50 @@
 />
 
 <Button
-text="With icon" :icon="Icons.save"
-color="danger"
+  text="With icon" :icon="Icons.save"
+  color="danger"
 />
 
-  <hr />
+<hr/>
 
-  <Button is-loading
+<Button is-loading
   text="Loading" :icon="Icons.save"
   color="success"
-  />
+/>
 
-  <Button
-    is-loading
-    text="Loading" :icon="Icons.save"
-    spinner-name="dots"
-    color="success"
-  />
+<Button
+  is-loading
+  text="Loading" :icon="Icons.save"
+  spinner-name="dots"
+  color="success"
+/>
 
-  <hr />
+<hr/>
 
-  <Button
-    text="Router redirect"
-    :icon="Icons.arrowRedo"
-    color="medium"
-    :to="{ name: 'contact' }"
-  />
+<Button
+  text="Router redirect"
+  :icon="Icons.arrowRedo"
+  color="medium"
+  :to="{ name: 'contact' }"
+/>
 
-  <Button
+<Button
   icon-only :icon="Icons.save"
   color="secondary"
-  />
+/>
 
-  <hr />
-  <Button
+<hr/>
+<Button
   text="Small" :icon="Icons.save"
   color="dark"
   size="small"
-  />
+/>
 
-  <Button text="Large" :icon="Icons.save"
+<Button
+  text="Large" :icon="Icons.save"
   color="warning"
   size="large"
-  />
-  
+/>
 </template>
 
 <script setup>
@@ -67,7 +67,7 @@ const Icons = ref({
 <style scoped>
 .simple:hover {
   transition: transform 0.3s ease, border-radius 0.3s ease;
-  border-radius: 15px;
+  border-radius: 4vh;
   transform: scale(1.1);
 }
 </style>
