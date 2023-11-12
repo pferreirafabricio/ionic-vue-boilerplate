@@ -163,7 +163,7 @@ function redirectToRecoveryPassword() {
   border: 1.5px solid #c4c4c4;
   border-radius: 5px;
   height: 50px;
-  width: 50vh;
+  width: 80%;
   display: flex;
   align-items: center;
   padding-left: 10px;
@@ -217,23 +217,21 @@ function redirectToRecoveryPassword() {
   font-size: 15px;
   font-weight: 500;
   border-radius: 5px;
-  height: 70px;
-  width: 80%;
+  height: 50px;
+  width: 35%;
   cursor: pointer;
 }
 
 .button-submit:hover {
-  margin: 10px auto 0px auto;
+  margin: 10px auto 0 auto;
   background-color: #000000;
-  transform: scale(1.05);
-  transition: 1s;
+  transform: scale(1.1);
+  transition: 0.3s;
   border: none;
   color: white;
   font-size: 15px;
   font-weight: 500;
   border-radius: 5px;
-  height: 70px;
-  width: 80%;
   cursor: pointer;
 }
 
