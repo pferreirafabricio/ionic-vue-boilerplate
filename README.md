@@ -24,12 +24,10 @@
 </div>
 <br/>
 
-> **Note**
->
+> [!NOTE]
 > Take a look at https://pferreirafabricio.github.io/ionic-vue-boilerplate for a live test. OBS: Don't forget to press F12 and toggle device emulation to view it in mobile view.
 
-> **Note**
->
+> [!NOTE]
 > If you prefer you can download the .apk file on the [releases page](https://github.com/pferreirafabricio/ionic-vue-boilerplate/releases)
 
 ## 📖 About
