@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkapp_boilerplate"]=self["webpackChunkapp_boilerplate"]||[]).push([[651],{6651:function(e,a,n){n.r(a),n.d(a,{default:function(){return p}});var r=n(641);function t(e,a){const n=(0,r.g2)("base-layout");return(0,r.uX)(),(0,r.Wv)(n,null,{default:(0,r.k6)((()=>[(0,r.eW)(" Admin Dashboard ")])),_:1})}var u=n(6262);const l={},o=(0,u.A)(l,[["render",t]]);var p=o}}]);
+//# sourceMappingURL=651.65f214d0.js.map
