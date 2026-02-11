@@ -31,7 +31,7 @@
     "@ionic/vue": "^7.4.3",
     "@ionic/vue-router": "^7.4.3",
     "@vue/reactivity": "^3.2.6",
-    "axios": "^1.12.0",
+    "axios": "^1.13.5",
     "ionicons": "^5.5.3",
     "mitt": "^2.1.0",
     "pinia": "^2.1.6",
