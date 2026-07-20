@@ -33,7 +33,7 @@
       @click="cleanSelect()"
     />
   </ion-item>
-  <error-message class="mt-1" :text="errors.value" />
+  <ErrorMessage class="mt-1" :text="errors.value" />
 </template>
 
 <script setup>
@@ -42,6 +42,7 @@ import { IonSelect, IonSelectOption, IonItem } from "@ionic/vue";
 import { onMounted, ref, defineProps, defineEmits, toRefs, watch } from "vue";
 
 import Button from "../Button.vue";
+import ErrorMessage from "../ErrorMessage.vue";
 
 const emit = defineEmits(["update:modelValue"]);
 
