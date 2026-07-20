@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title><%= VUE_APP_TITLE %></title>
+        <title><%= process.env.VUE_APP_TITLE || "Ionic Vue Boilerplate" %></title>
 
         <meta
             name="viewport"
@@ -20,7 +20,7 @@
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta
             name="apple-mobile-web-app-title"
-            content="<%= VUE_APP_TITLE %>"
+            content="<%= process.env.VUE_APP_TITLE || "Ionic Vue Boilerplate" %>"
         />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     </head>
